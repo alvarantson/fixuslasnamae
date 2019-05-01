@@ -1,0 +1,23 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{ contact.name }}</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static "table.css" %}">
+</head>
+<body>
+{% include "navbar/navbar.html" %}
+
+<div class="col-xs-12 main">
+	<form method="POST"> {% csrf_token %}
+		<input type="text" name="name">
+		<input type="password" name="password">
+		<button type="submit" name="submit-btn" value="login">Log in</button>
+	</form>
+</div>
+
+{% include "navbar/footer.html" %}
+</body>
+</html>

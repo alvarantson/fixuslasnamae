@@ -1,0 +1,120 @@
+/* carousel */
+	.carousel{
+		height: 22.2222vw;
+	}
+	.carousel-inner img{
+		width: 100vw !important;
+	}
+	.carousel-control {
+		margin-top: 5vh;
+		height: 22.5vw;
+	}
+	.carousel-indicators li{
+		background-color: rgba(255,255,255,0.4) !important;
+		border: none !important;
+		width: 1.5vh !important;
+		height: 1.5vh !important;
+		box-shadow: 1px 1px 5px rgba(0,0,0,0.6), 1px 1px 5px rgba(0,0,0,0.6);
+		border-radius: 5vh 5vh 5vh 5vh !important;
+	}
+	.carousel-indicators .active {
+		background-color: rgba(255,255,255,1) !important;
+		width: 1.7vh !important;
+		height: 1.7vh !important;
+	}
+
+	.carousel-bottom {
+		position: absolute;
+		top: 19.5vw;
+		margin-top: 5vh;
+	}
+	.carousel-bottom__triangle{
+		width: 0;
+		height: 0;
+		border-top: 2.5vw solid transparent;
+		border-right: 100vw solid #FEC900;
+		border-bottom: 0 solid transparent;
+	}
+	.carousel-bottom__square{
+		width: 100vw;
+		height: 0.5vw;
+		background-color: #FEC900;
+	}
+
+/* about us */
+	.about{
+		margin-top: 15vh;
+		text-align: center;
+	}
+	.about__item__icon span {
+		color: white;
+		background-color: #0058a2;
+		font-size: 5vh;
+		padding: 1.5vh 1.5vh 1.5vh 1.5vh;
+		border-radius: 5vh 5vh 5vh 5vh;
+	}
+	.about__item__header h3{
+		font-size: 3vh;
+		font-weight: bold;
+		padding-top: 0.5vh;
+		text-align: left;
+		margin-left: 3vh;
+	}
+	.about__item__description p{
+		font-size: 2vh;
+		padding-top: 3vh;
+	}
+	.about__item__link {
+		color: #0058a2;
+		font-size: 2.5vh;
+		margin-top: 1vh;
+	}
+
+/* discounts */
+	.discounts {
+		margin-top: 12vh;
+		margin-bottom: 4vh;
+	}
+	.discounts__header h3{
+		font-weight: bold;
+		font-size: 3vh;
+		color: #0058a2;
+		text-align: center;
+	}
+	.discounts__link{
+		text-align: right;
+		padding-top: 1.25vh;
+	}
+	.discounts__link a{
+		font-size: 2.5vh;
+		color: #0058a2;
+		text-align: center;
+	}
+
+	.discounts__items{
+		margin-top: 6vh;
+	}
+	.discounts__items__item__img img{
+		width: 80%;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.discounts__items__item__info h3{
+		font-size: 2.25vh;
+		font-weight: bold;
+	}
+	.discounts__items__item__info p{
+		font-size: 1.5vh;
+	}
+	.discounts__items__item__info h4{
+		font-size: 4vh;
+		font-weight: bold;
+		color: red;
+		margin-bottom: 0;
+	}
+	.discounts__items__item__info h5{
+		font-size: 1.25vh;
+		margin-top: 0;
+	}
+

@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{ contact.name }}</title>
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed|Lato|Rubik|Exo|Quicksand|Roboto|Slabo+27px|Lobster|Titillium+Web" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static "reklaam.css" %}">
+</head>
+<body>
+
+<div class="overlay" {% if request.session.paper != '-' %} style="display: none;" {% endif %}>
+	{% for item in items %}
+		<form method="POST">{% csrf_token %}
+			<button type="submit" name="submit-btn" value="{{ item.nimi }}">{{ item.nimi }}</button>
+		</form>
+	{% endfor %}
+</div>
+<div class="blacker"></div>
+
+<img src="{{ items.0.img.url }}">
+
+<div class="writer"></div>
+
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+{% load staticfiles %}
+<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+<!-- BOOTSTRAP 3 CDN -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" type="text/css" href="{% static 'all.css' %}">
+
+<style type="text/css">
+@font-face {
+	font-family: ProximaNova;
+	src: url({% static 'ProximaNova-Regular.otf' %});
+}
+</style>
+<!-- social media icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- IF DOCUMENT READY LOADER -->
+<div class="loader">
+	<img src="{% static 'i/logo.svg' %}">
+</div>
+<!-- END OF LOADER -->
+<!-- NAVBAR CONTENT -->
+
+	<!-- DESKTOP NAVBAR -->
+	<div class="navbar navbar-desktop">
+		<a href="/">
+		<img class="navbar-desktop__logo" src="{% static 'i/logo.svg' %}">
+		</a>
+		<div class="col-xs-10 navbar-desktop__info">
+			<h3>
+				<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+				<sup>{{ contact.address }}</sup>
+				<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+				<sup>{{ navbar_lang.open_hours }}: {{ contact.open_hours }}</sup>
+			</h3>
+		</div>
+		<div class="col-xs-2 navbar-desktop__langs">
+			{% for flag in flags %}
+			<div class="col-xs-2 navbar-desktop__langs__item">
+				<form method="POST"> {% csrf_token %}
+					<input type="hidden" name="langselect" value="{{ flag.lang }}">
+					<button type="submit" name="submit-btn" value="lang">
+						<img src="{{ flag.flag.url }}">
+					</button>
+				</form>
+			</div>
+			{% endfor %}
+		</div>
+		<div class="col-xs-4"></div>
+		<div class="col-xs-6 navbar-desktop__nav">
+			<a href="/">{{ navbar_lang.index }}</a>
+			<a href="/meist">{{ navbar_lang.about }}</a>
+			<a href="/browser">{{ navbar_lang.browser }}</a>
+			<a target="_blank" href="http://fixus24.ee/">{{ navbar_lang.e_store }}</a>
+			<a target="_blank" href="https://fixus.ee/autokaubad/">{{ navbar_lang.locations }}</a>
+		</div>
+		<div class="col-xs-2"></div>
+	</div>
+	<!-- END OF DESKTOP NAVBAR -->
+	<!-- PHONE NAVBAR -->
+
+	<div class="navbar navbar-phone">
+		<img class="navbar-phone__logo" src="{% static 'i/logo.svg' %}">
+		<span class="glyphicon glyphicon-menu-hamburger navbar-phone__burger" aria-hidden="true"></span>
+		<span class="glyphicon glyphicon-remove navbar-phone__closer hidden" aria-hidden="true"></span>
+		<div class="col-xs-12 navbar-phone__content">
+			<a href="/">{{ navbar_lang.index }}</a><br>
+			<a href="/meist">{{ navbar_lang.about }}</a><br>
+			<a href="/browser">{{ navbar_lang.browser }}</a><br>
+			<a target="_blank" href="http://fixus24.ee/">{{ navbar_lang.e_store }}</a><br>
+			<a target="_blank" href="https://fixus.ee/autokaubad/">{{ navbar_lang.locations }}</a><br>
+
+			<div class="navbar-phone__content__langs" align="center">
+				{% for flag in flags %}
+				<div class="col-xs-12 navbar-phone__content__langs__item">
+					<form method="POST"> {% csrf_token %}
+						<input type="hidden" name="langselect" value="{{ flag.lang }}">
+						<button type="submit" name="submit-btn" value="lang">
+							<img src="{{ flag.flag.url }}">
+						</button>
+					</form>
+				</div>
+				{% endfor %}
+			</div>
+
+			<div class="col-xs-12 navbar-phone__content__footerinfo">
+				<p>
+					<b>{{ contact.name }}</b><br>
+					{{ contact.footer_info|linebreaks }}
+				</p>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- END OF PHONE NAVBAR -->
+	<div class="col-xs-12 navbar-spacer"></div>
+<!-- END OF NAVBAR -->
+

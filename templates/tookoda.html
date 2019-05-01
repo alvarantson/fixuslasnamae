@@ -1,0 +1,99 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{ contact.name }}</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static "table.css" %}">
+</head>
+<body>
+{% include "navbar/navbar.html" %}
+
+<div class="col-xs-12 main">
+	<a href="/login">Tagasi!</a>
+	
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">aeg</th>
+			<th scope="col">too vottis vastu</th>
+			<th scope="col">auto mark</th>
+			<th scope="col">reg nr</th>
+			<th scope="col">telefon</th>
+			<th scope="col">ettemaks</th>
+			<th scope="col">teostav too</th>
+			<th scope="col">mured kommentaarid</th>
+			{% if request.user.is_superuser %}<th scope="col">kes tegi</th>{% endif %}
+			<th scope="col"></th>
+			<th scope="col"></th>
+		</tr>
+	</thead>
+	<tbody>
+		{% if request.session.varuosad_priority == 'M' %}
+		<h1>Tuhi!</h1>
+		{% else %}
+		{% if request.session.varuosad_priority == 'L' or request.session.varuosad_priority == 'K' %}
+		<tr>
+			<form method="POST"> {% csrf_token %}
+				<td><input type="date" name="aeg" value="{{ aeg }}"></th>
+				<td><input type="text" name="too_vottis_vastu" value="{{ item.too_vottis_vastu }}"></td>
+				<td><input type="text" name="auto_mark" value="{{ item.auto_mark }}"></td>
+				<td><input type="text" name="reg_nr" value="{{ item.reg_nr }}"></td>
+				<td><input type="text" name="telefon" value="{{ item.telefon }}"></td>
+				<td><input type="text" name="ettemaks" value="{{ item.ettemaks }}"></td>
+				<td><input type="text" name="teostav_too" value="{{ item.teostav_too }}"></td>
+				<td><input type="text" name="mured_kommentaarid" value="{{ item.mured_kommentaarid }}"></td>
+				{% if request.user.is_superuser %}<th scope="col"><input type="text" name="kes_tegi" value="{{ item.kes_tegi }}"></th>{% else %}<input type="hidden" name="kes_tegi" value="{{ request.session.worker }}">{% endif %}
+				<th scope="col"><button type="submit" name="submit-btn" value="new~{{ item.aeg }}~{{ item.too_vottis_vastu }}"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></th>
+				<th scope="col"></th>
+			</form>
+		</tr>
+		{% endif %}
+		{% for item in items %}
+		<tr id="{{ item.reg_nr }}-{{ item.teostav_too|cut:" " }}-{{ item.aeg|cut:"-" }}-plain">
+			<th scope="row">{{ item.aeg }}</th>
+			<td>{{ item.too_vottis_vastu }}</td>
+			<td>{{ item.auto_mark }}</td>
+			<td>{{ item.reg_nr }}</td>
+			<td>{{ item.telefon }}</td>
+			<td>{{ item.ettemaks }}</td>
+			<td>{{ item.teostav_too }}</td>
+			<td>{{ item.mured_kommentaarid }}</td>
+			{% if request.user.is_superuser %}<th scope="col">{{ item.kes_tegi }}</th>{% endif %}
+			{% if request.session.varuosad_priority == 'K' %}
+			<th scope="col"><button id="{{ item.reg_nr }}-{{ item.teostav_too|cut:" " }}-{{ item.aeg|cut:"-" }}-edit"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></th>
+			<th scope="col"><form method="POST">{% csrf_token %}<button type="submit" name="submit-btn" value="remove~{{ item.aeg }}~{{ item.too_vottis_vastu }}"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button></form></th>
+			{% endif %}
+		</tr>
+		<tr id="{{ item.reg_nr }}-{{ item.teostav_too|cut:" " }}-{{ item.aeg|cut:"-" }}-editor" class="hidden">
+			<form method="POST"> {% csrf_token %}
+				<th scope="row">{{ item.aeg }}<input type="hidden" name="aeg" value="{{ item.aeg }}"></th>
+				<td>{{ item.too_vottis_vastu }}<input type="hidden" name="too_vottis_vastu" value="{{ item.too_vottis_vastu }}"></td>
+				<td><input type="text" name="auto_mark" value="{{ item.auto_mark }}"></td>
+				<td><input type="text" name="reg_nr" value="{{ item.reg_nr }}"></td>
+				<td><input type="text" name="telefon" value="{{ item.telefon }}"></td>
+				<td><input type="text" name="ettemaks" value="{{ item.ettemaks }}"></td>
+				<td><input type="text" name="teostav_too" value="{{ item.teostav_too }}"></td>
+				<td><input type="text" name="mured_kommentaarid" value="{{ item.mured_kommentaarid }}"></td>
+				{% if request.user.is_superuser %}<th scope="col"><input type="text" name="kes_tegi" value="{{ item.kes_tegi }}"></th>{% else %}<input type="hidden" name="kes_tegi" value="{{ request.session.worker }}">{% endif %}
+				<th scope="col"><button type="submit" name="submit-btn" value="edit~{{ item.aeg }}~{{ item.too_vottis_vastu }}"><span id="{{ item.reg_nr }}-{{ item.teostav_too|cut:" " }}-{{ item.aeg|cut:"-" }}-edit" class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></th>
+				<th scope="col"></th>
+			</form>
+		</tr>
+		<script type="text/javascript">
+			$('#{{ item.reg_nr }}-{{ item.teostav_too|cut:" " }}-{{ item.aeg|cut:"-" }}-edit').click(function(){
+				$('#{{ item.reg_nr }}-{{ item.teostav_too|cut:" " }}-{{ item.aeg|cut:"-" }}-plain').toggleClass('hidden');
+				$('#{{ item.reg_nr }}-{{ item.teostav_too|cut:" " }}-{{ item.aeg|cut:"-" }}-editor').toggleClass('hidden');
+			});
+		</script>
+		{% endfor %}
+		{% endif %}
+	</tbody>
+</table>
+
+</div>
+
+{% include "navbar/footer.html" %}
+</body>
+</html>

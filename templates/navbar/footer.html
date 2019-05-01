@@ -1,0 +1,42 @@
+{% load staticfiles %}
+<!-- FOOTER -->
+<div class="col-xs-12 footer footer-desktop">
+	<div class="col-xs-12 footer__top"></div>
+	<div class="col-xs-12 footer__content">
+		<div class="col-xs-12 col-lg-8 footer__content__info">
+			<div class="col-xs-12 col-lg-4"></div>
+			<div class="col-xs-12 col-lg-8">
+				<div class="col-xs-12 col-lg-4">
+					<div class="col-xs-12 footer__content__info__img">
+						<img src="{% static 'i/logo.svg' %}">
+					</div>
+					<div class="col-xs-12 footer__content__info__socialmedia">
+						{% for media in social_media %}
+						<a target="_blank" href="{{ media.url }}" class="fa fa-{{ media.icon }}"></a>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="col-xs-12 col-lg-4 footer__content__info__text">
+					<p>
+						<b>{{ contact.name }}</b><br>
+						{{ contact.footer_info|linebreaks }}
+					</p>
+				</div>
+				<div class="col-xs-12 col-lg-4 footer__content__info__text">
+					<p>
+						<b>{{ navbar_lang.navigation }}</b><br>
+						<a href="/meist">{{ navbar_lang.about }}</a><br>
+						<a href="/browser">{{ navbar_lang.browser }}</a><br>
+						<a target="_blank" href="http://fixus24.ee/">{{ navbar_lang.e_store }}</a><br>
+						<a target="_blank" href="https://fixus.ee/autokaubad/">{{ navbar_lang.locations }}</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-lg-4 footer__content__shape">
+			<div class="footer__content__shape__parallelogram"></div>
+		</div>
+	</div>
+</div>
+<!-- END OF FOOTER -->
+<script type="text/javascript" src="{% static 'all.js' %}"></script>

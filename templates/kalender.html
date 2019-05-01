@@ -1,0 +1,62 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{ contact.name }}</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static "table.css" %}">
+</head>
+<body>
+{% include "navbar/navbar.html" %}
+
+<div class="col-xs-12 main">
+	<a href="/login">Tagasi!</a>
+	
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">nimi</th>
+			<th scope="col">paev</th>
+			<th scope="col">tundide arv</th>
+			{% if request.user.is_superuser %}<th scope="col">kes tegi</th>{% endif %}
+			<th scope="col"></th>
+			<th scope="col"></th>
+		</tr>
+	</thead>
+	<tbody>
+		{% if request.session.kalender_priority == 'M' %}
+		<h1>Tuhi!</h1>
+		{% else %}
+		{% if request.session.kalender_priority == 'L' or request.session.kalender_priority == 'K' %}
+		<tr>
+			<form method="POST"> {% csrf_token %}
+				<td><input type="text" name="nimi" value="{{ item.nimi }}"></td>
+				<td><input type="date" name="paev" value="{{ item.paev }}"></td>
+				<td><input type="text" name="tundide_arv" value="{{ item.tundide_arv }}"></td>
+				{% if request.user.is_superuser %}<th scope="col"><input type="text" name="kes_tegi" value="{{ item.kes_tegi }}"></th>{% else %}<input type="hidden" name="kes_tegi" value="{{ request.session.worker }}">{% endif %}
+				<th scope="col"><button type="submit" name="submit-btn" value="new~{{ item.nimi }}~{{ item.paev }}"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button></th>
+				<th scope="col"></th>
+			</form>
+		</tr>
+		{% endif %}
+		{% for item in items %}
+		<tr>
+			<td>{{ item.nimi }}</td>
+			<td>{{ item.paev }}</td>
+			<td>{{ item.tundide_arv }}</td>
+			{% if request.user.is_superuser %}<th scope="col">{{ item.kes_tegi }}</th>{% endif %}
+			{% if request.session.kalender_priority == 'K' %}
+			<th scope="col"><form method="POST">{% csrf_token %}<button type="submit" name="submit-btn" value="remove~{{ item.nimi }}~{{ item.paev }}"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button></form></th>
+			{% endif %}
+		</tr>
+		{% endfor %}
+		{% endif %}
+	</tbody>
+</table>
+
+</div>
+
+{% include "navbar/footer.html" %}
+</body>
+</html>

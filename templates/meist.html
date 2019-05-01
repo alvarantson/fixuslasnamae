@@ -1,0 +1,65 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{ contact.name }}</title>
+	<link rel="stylesheet" type="text/css" href="{% static "meist.css" %}">
+</head>
+<body>
+{% include "navbar/navbar.html" %}
+
+<!-- ABOUT -->
+<div class="col-xs-12 col-md-2"></div>
+<div class="col-xs-12 col-md-8 about">
+	<div class="col-xs-12 about__header">
+		<h3>{{ lang.header }}</h3>
+	</div>
+	<div class="col-xs-12 about__address">
+		<h3>{{ contact.footer_info|linebreaks }}</h3>
+	</div>
+	<div class="col-xs-12 about__maps">
+		<div id="map"></div>
+
+		<script>
+
+
+
+      function initMap() {
+        var myLatLng = {lat: {{ contact.gmaps_x }}, lng: {{ contact.gmaps_y }}};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: {{ contact.gmaps_zoom }},
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: '{{ contact.name }}'
+        });
+      }
+		</script>
+
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ contact.gmaps_API }}&callback=initMap"></script>
+	</div>
+	<div class="col-xs-12 about__contact">
+		<h3>{{ lang.contact_us }}</h3>
+		<div class="col-xs-12 about__contact__form">
+			<form method="POST"> {% csrf_token %}
+				<input type="text" name="name" placeholder="{{ lang.name }}"><br>
+				<input type="text" name="phone" placeholder="{{ lang.phone }}"><br>
+				<input type="text" name="email" placeholder="{{ lang.email }}"><br>
+				<textarea name="letter" placeholder="{{ lang.your_problem }}" rows="7"></textarea><br>
+				<button type="submit" name="submit-btn" value="contact">{{ lang.send }}</button>
+			</form>
+		</div>
+	</div>
+</div>
+<div class="col-xs-12 col-md-2"></div>
+<!-- END OF ABOUT -->
+
+{% include "navbar/footer.html" %}
+
+</body>
+</html>

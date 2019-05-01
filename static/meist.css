@@ -1,0 +1,55 @@
+.about {
+	margin-top: 12vh;
+}
+.about__header h3 {
+	color: #0058a2;
+	font-size: 3.5vh;
+	font-weight: bold;
+}
+
+.about__maps #map {
+	width:100%;
+	height:40vh;
+}
+
+.about__contact h3 {
+	margin-top: 12vh;
+	color: #0058a2;
+	font-size: 3.5vh;
+	font-weight: bold;
+}
+.about__address h3{
+	font-size: 2vh;
+}
+
+.about__contact__form {
+	text-align: center;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0 !important;
+}
+
+.about__contact__form input,
+.about__contact__form textarea {
+	width: 100%;
+	padding: 0.5vh 0.5vh 0.5vh 0.5vh;
+	color: black !important;
+	margin-bottom: 1.5vh;
+	margin-top: 1.5vh;
+	font-size: 3vh;
+}
+
+.about__contact__form input {
+}
+.about__contact__form textarea {
+}
+.about__contact__form button {
+	font-size: 3vh;
+	background-color: #0058a2;
+	border: none;
+	color: white;
+	padding: 1vh 2vh 1vh 2vh;
+	margin-top: 3vh;
+}
+.about__contact__form button {
+	margin-bottom: 5vh;
+}
