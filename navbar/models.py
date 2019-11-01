@@ -34,7 +34,7 @@ class langs(models.Model):
 		return self.lang
 
 class ad(models.Model):
-	url = models.CharField(max_length=999)
+	url = models.CharField("1800x400",max_length=999)
 	img = models.ImageField()
 	def __str__(self):
 		return self.url

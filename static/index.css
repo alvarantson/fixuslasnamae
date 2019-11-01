@@ -63,6 +63,7 @@
 	.about__item__description p{
 		font-size: 2vh;
 		padding-top: 3vh;
+		text-align: left;
 	}
 	.about__item__link {
 		color: #0058a2;
