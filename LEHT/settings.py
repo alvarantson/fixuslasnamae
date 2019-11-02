@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'navbar',
     'meist',
     'browser',
+    "hinnasilt",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

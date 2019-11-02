@@ -5,9 +5,9 @@ from .models import index_lang, index_icon
 from browser.models import toode
 # Create your views here.
 def index(request):
-	print(request.user.is_authenticated)
-	if request.user.is_authenticated == False:
-		return HttpResponseRedirect('/admin')
+#	print(request.user.is_authenticated)
+#	if request.user.is_authenticated == False:
+#		return HttpResponseRedirect('/admin')
 	if 'lang' not in request.session:
 		request.session['lang'] = 'est'
 	flags = []
