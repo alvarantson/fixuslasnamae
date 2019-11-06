@@ -14,7 +14,7 @@
 		border: none !important;
 		width: 1.5vh !important;
 		height: 1.5vh !important;
-		box-shadow: 1px 1px 5px rgba(0,0,0,0.6), 1px 1px 5px rgba(0,0,0,0.6);
+		box-shadow: 1px 1px 5px rgba(0,0,0,1), 1px 1px 5px rgba(0,0,0,1);
 		border-radius: 5vh 5vh 5vh 5vh !important;
 	}
 	.carousel-indicators .active {
@@ -32,13 +32,13 @@
 		width: 0;
 		height: 0;
 		border-top: 2.5vw solid transparent;
-		border-right: 100vw solid #FEC900;
+		border-right: 100vw solid #fab900;
 		border-bottom: 0 solid transparent;
 	}
 	.carousel-bottom__square{
 		width: 100vw;
 		height: 0.5vw;
-		background-color: #FEC900;
+		background-color: #fab900;
 	}
 
 /* about us */
@@ -69,6 +69,8 @@
 		color: #0058a2;
 		font-size: 2.5vh;
 		margin-top: 1vh;
+		text-align: left;
+		margin-left: 1vh;
 	}
 
 /* discounts */
@@ -111,7 +113,7 @@
 	.discounts__items__item__info h4{
 		font-size: 4vh;
 		font-weight: bold;
-		color: red;
+		color: #fab900;
 		margin-bottom: 0;
 	}
 	.discounts__items__item__info h5{

@@ -7,12 +7,17 @@
 
 	<link rel="stylesheet" type="text/css" href="{% static 'browser.css' %}">
 </head>
+<body style="background-image: url('{% static 'i/BG.jpg' %}');">
 {% include "navbar/navbar.html" %}
 
+<div class="col-xs-12 browser-bg"><img src="{{ lang.bg_img.url }}"></div>
 <!-- browser -->
 <div class="col-xs-12 col-lg-2"></div>
 <div class="col-xs-12 col-lg-8 discounts">
 	<div class="col-xs-12 discounts__header">
+		<h3>{{ lang.header }}</h3>
+		<p>{{ lang.text|linebreaks }}</p>
+		<br><br><br>
 		<h3>{{ lang.h1 }}</h3>
 	</div>
 	<div class="col-xs-12 discounts__items">

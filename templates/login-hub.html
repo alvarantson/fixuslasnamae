@@ -2,31 +2,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>{{ contact.name }}</title>
+	<meta charset="utf-8">
+	<title>{{ contact.name }}</title>
 
 	<link rel="stylesheet" type="text/css" href="{% static "table.css" %}">
 </head>
 <body>
-{% include "navbar/navbar.html" %}
+	{% include "navbar/navbar.html" %}
 
-<div class="col-xs-12 main">
-	
-	{% if request.user.is_superuser %}
-	{% else %}
-	<form method="POST">{% csrf_token %}
-		<button type="submit" name="submit-btn" value="logout">log out</button>
-	</form>
-	{% endif %}
-{% if request.user.is_superuser %}
-	<div class="col-xs-12">
-		<div class="col-xs-3">tootajad</div>
+	<div class="col-xs-12 main">
+
+		{% if request.user.is_superuser %}
+		{% else %}
+		<form method="POST">{% csrf_token %}
+			<button type="submit" name="submit-btn" value="logout">log out</button>
+		</form>
+		{% endif %}
+		{% if request.user.is_superuser %}
+		<div class="col-xs-12">
+			<div class="col-xs-3">tootajad</div>
+		</div>
+		{% endif %}
+		<h1>
+			<a href="/">esilehele</a><br>
+			<a href="/kalender">kalender</a><br>
+			<a href="/tookoda">tookoda</a><br>
+			<a href="/varuosad">varuosad</a><br>
+			<a href="/reklaam">reklaam</a><br>
+			<a href="/loader">Lae andmeid sisse</a><br>
+		</h1>
+
 	</div>
-{% endif %}
-	<h1><a href="/kalender">kalender</a><br><a href="/tookoda">tookoda</a><br><a href="/varuosad">varuosad</a><br><a href="/reklaam">reklaam</a><br></h1>
 
-</div>
-
-{% include "navbar/footer.html" %}
+	{% include "navbar/footer.html" %}
 </body>
 </html>

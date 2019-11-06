@@ -1,0 +1,23 @@
+.repair-bg{
+	margin: 0 0 0 0;
+	padding: 0 0 0 0 !important;
+}
+.repair-bg img {
+	width: 100vw;
+}
+.repair {
+	margin-top: 10vh;
+}
+.repair h3 {
+	color: #0058a2;
+	font-size: 3.5vh;
+	font-weight: bold;
+}
+.repair p {
+	font-size: 1.75vh;
+}
+.repair-table {
+	margin-top: 5vh;
+	padding: 0 0 0 0;
+	font-size: 1.75vh;
+}

@@ -6,7 +6,7 @@
     <title>{{ contact.name }}</title>
 	<link rel="stylesheet" type="text/css" href="{% static "index.css" %}">
 </head>
-<body>
+<body style="background-image: url('{% static 'i/BG.jpg' %}');">
 {% include "navbar/navbar.html" %}
 
 <!-- CAROUSEL -->
@@ -22,7 +22,7 @@
 	<div class="carousel-inner">
 		{% for ad in ads %}
 		<div class="item{% if ad == ads.0 %} active{% endif %}">
-			<a href="{{ ad.url }}">
+			<a href="{{ ad.url }}" target="_blank">
 				<img src="{{ ad.img.url }}" alt="Advertisment">
 			</a>
 		</div>
@@ -54,13 +54,15 @@
 			<span class="glyphicon glyphicon-{{ i.logo }}" aria-hidden="true"></span>
 		</div>
 		<div class="col-xs-9 about__item__header">
-			<h3>{{ i.header }}</h3>
+			<h3>{{ i.header|safe }}</h3>
 		</div>
+	<!--
 		<div class="col-xs-12 about__item__description">
 			<p>{{ i.text|linebreaks }}</p>
 		</div>
+	-->
 		<div class="col-xs-12 about__item__link">
-			<a class="about__item__link" href="/meist">{{ lang.uuri_lahemalt }}</a>
+			<a class="about__item__link" href="/{{ i.link }}">{{ lang.uuri_lahemalt }}</a>
 		</div>
 	</div>
 	{% endfor %}
@@ -86,7 +88,7 @@
 				<div class="col-xs-12 col-lg-6 discounts__items__item__info">
 					<h3>{{ toode.name }}</h3>
 					<p>{{ toode.description }}</p>
-					<h4>{{ toode.price }} <sup>€</sup></h4>
+					<h4>{{ toode.price }}<sup>€</sup></h4>
 					<h5>{{ lang.enne }}: {{ toode.prevprice }}€</h5>
 				</div>
 			</div>

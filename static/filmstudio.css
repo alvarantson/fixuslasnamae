@@ -1,0 +1,19 @@
+.filmstudio {
+	margin-top: 10vh;
+}
+.filmstudio h3 {
+	color: #0058a2;
+	font-size: 3.5vh;
+	font-weight: bold;
+}
+.filmstudio p {
+	font-size: 1.75vh;
+}
+.filmstudio-table {
+	margin-top: 5vh;
+	padding: 0 0 0 0;
+	font-size: 1.75vh;
+}
+.filmstudio-gallery img{
+	width: 100%
+}

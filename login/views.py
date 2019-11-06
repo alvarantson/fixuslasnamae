@@ -18,7 +18,8 @@ def login(request):
 			print(request.session['worker'])
 			del request.session['worker']
 			return HttpResponseRedirect('/login') #INDEX\i puhul '/'
-		
+	if request.user.is_superuser:
+		request.session['worker'] = "admin"
 	try:
 		print(request.session['worker'])
 		return render(request,'login-hub.html',context={})

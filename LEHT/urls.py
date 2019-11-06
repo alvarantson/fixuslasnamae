@@ -28,7 +28,8 @@ urlpatterns = [
     url(r'^varuosad', include('varuosad.urls')),
     url(r'^kalender', include('kalender.urls')),
     url(r'^reklaam', include('reklaam.urls')),
-    url(r'^hinnasilt', include('hinnasilt.urls')),
+    url(r'^repair', include('repair.urls')),
+    url(r'^loader', include('loader.urls')),
     url(r'^favicon.ico$',
         RedirectView.as_view( # the redirecting function
             url=staticfiles_storage.url('favicon.ico'), # converts the static directory + our favicon into a URL

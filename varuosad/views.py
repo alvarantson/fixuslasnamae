@@ -21,8 +21,12 @@ def varuosad(request):
 			).delete()
 
 		if 'new' in request.POST['submit-btn']:
+			try:
+				nr = str(int(varuosad_entry.objects.last().nr)+1)
+			except:
+				nr = 1
 			varuosad_entry.objects.create(
-				nr = request.POST['nr'],
+				nr = nr,
 				nimi = request.POST['nimi'],
 				kontakt = request.POST['kontakt'],
 				automark = request.POST['automark'],

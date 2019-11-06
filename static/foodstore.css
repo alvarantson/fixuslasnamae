@@ -1,0 +1,23 @@
+.foodstore-bg{
+	margin: 0 0 0 0;
+	padding: 0 0 0 0 !important;
+}
+.foodstore-bg img {
+	width: 100vw;
+}
+.foodstore {
+	margin-top: 10vh;
+}
+.foodstore h3 {
+	color: #0058a2;
+	font-size: 3.5vh;
+	font-weight: bold;
+}
+.foodstore p {
+	font-size: 1.75vh;
+}
+.foodstore-table {
+	margin-top: 5vh;
+	padding: 0 0 0 0;
+	font-size: 1.75vh;
+}

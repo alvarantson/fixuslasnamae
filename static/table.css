@@ -1,6 +1,7 @@
 .main{
 	margin-top: 15vh;
 }
+th,
 td{
 	padding: 0 0 0 0 !important;
 }
@@ -8,5 +9,5 @@ table{
 	width: 100vw;
 }
 input{
-	width: 7.5vw;
+	width: 100%;
 }

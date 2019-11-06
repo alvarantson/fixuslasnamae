@@ -1,0 +1,51 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>{{ contact.name }}</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'filmstudio.css' %}">
+</head>
+<body style="background-image: url('{% static 'i/BG.jpg' %}');">
+{% include "navbar/navbar.html" %}
+
+<!-- filmstudio -->
+<div class="col-xs-12 col-lg-2"></div>
+<div class="col-xs-12 col-lg-8 ">
+	<div class="col-xs-12 filmstudio">
+		<h3>{{ lang.header }}</h3>
+		<p>{{ lang.text|linebreaks }}</p>
+		<div class="col-xs-12 filmstudio-gallery">
+			{% for i in img %}
+			<div class="col-xs-12 col-lg-3">
+				<img src="{{ i.img.url }}">
+			</div>
+			{% endfor %}
+		</div>
+		<div class="col-xs-12 filmstudio-table">
+			<table class="table table-striped">
+				<tr>
+					<th>{{ lang.table_field1 }}</th>
+					<th>{{ lang.table_field2 }}</th>
+					<th>{{ lang.table_field3 }}</th>
+				</tr>
+				{% for item in inventory %}
+				<tr>
+					<td>{{ item.item }}</td>
+					<td>{{ item.desc }}</td>
+					<td>{{ item.qty }}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+		<h3><a href="/meist"><u>{{ lang.book }}</u></a></h3>
+	</div>
+</div>
+	<div class="col-xs-12 col-lg-2"></div>
+	<!-- end of filmstudio -->
+
+	<script type="text/javascript" src="{% static 'filmstudio.js' %}"></script>
+	{% include "navbar/footer.html" %}
+</body>
+</html>

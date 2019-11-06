@@ -17,7 +17,7 @@ body{
 	z-index: 9999;
 }
 .navbar-spacer{
-	height: 4.9vh;
+	height: 4.5vh;
 }
 .loader{
 	position: fixed;
@@ -34,9 +34,20 @@ body{
 	margin-left: auto;
 	margin-right: auto;
 }
+/* Login button */
+.glyphicon-user {
+	position: fixed;
+	top: 1.25vh;
+	right: 2vh;
+	font-size: 2.5vh;
+	z-index: 9999999;
+	color: white;
+	cursor: pointer;
+}
+
 /* Desktop navbar */
 	.navbar-desktop{
-		height: 5.5vh;
+		height: 5vh;
 		width: 100vw;
 		border-radius: 0 0 
 
@@ -70,7 +81,7 @@ body{
 		text-decoration: none;
 		font-size: 2.25vh;
 		margin-left: 3vh;
-		text-shadow: 1px 1px 5px rgba(0,0,0,1), 1px 1px 5px rgba(0,0,0,1);
+		text-shadow: 1px 1px 5px rgba(0,0,0,0.6), 1px 1px 5px rgba(0,0,0,0.6);
 	}
 
 	.navbar-desktop__langs__item {
@@ -79,6 +90,7 @@ body{
 	.navbar-desktop__langs__item img {
 		width: 3.5vh;
 		height: 2.1vh;
+		margin-top: -1px;
 	}
 	.navbar-desktop__langs__item button {
 		display: inline-block;
@@ -86,6 +98,7 @@ body{
 		border: none;
 		width: 3.4vh;
 		height: 2vh;
+		border: none;
 	}
 
 /* Phone navbar */
@@ -122,7 +135,7 @@ body{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#033762', endColorstr='#0058a2',GradientType=0 ); /* IE6-9 */
 
 	text-align: center;
-	padding-top: 15vh;
+	padding-top: 20vh;
 }
 
 .navbar-phone__content a{
@@ -172,7 +185,7 @@ body{
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#033762', endColorstr='#0058a2',GradientType=0 ); /* IE6-9 */
 	}
 	.footer__top{
-		background-color: #FEC900;
+		background-color: #fab900;
 		width: 100vw;
 		height: 2vh;
 		padding: 0 0 0 0;
@@ -220,6 +233,9 @@ body{
 		height: 25vh;
 		transform: skew(20deg);
 		background: #0058a2;
-		margin-left: 15vw;
+		margin-left: 7vw;
 		padding: 0 0 0 0;
 	}
+table {
+	background-color: rgba(255,255,255,1);
+}
