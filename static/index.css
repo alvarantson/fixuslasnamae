@@ -4,6 +4,7 @@
 	}
 	.carousel-inner img{
 		width: 100vw !important;
+		margin-top: 0.5vh;
 	}
 	.carousel-control {
 		margin-top: 5vh;
@@ -25,20 +26,20 @@
 
 	.carousel-bottom {
 		position: absolute;
-		top: 19.5vw;
+		top: 19.4vw;
 		margin-top: 5vh;
 	}
 	.carousel-bottom__triangle{
 		width: 0;
 		height: 0;
 		border-top: 2.5vw solid transparent;
-		border-right: 100vw solid #fab900;
+		border-right: 100vw solid #d32626;
 		border-bottom: 0 solid transparent;
 	}
 	.carousel-bottom__square{
 		width: 100vw;
 		height: 0.5vw;
-		background-color: #fab900;
+		background-color: #d32626;
 	}
 
 /* about us */
@@ -113,7 +114,7 @@
 	.discounts__items__item__info h4{
 		font-size: 4vh;
 		font-weight: bold;
-		color: #fab900;
+		color: red;
 		margin-bottom: 0;
 	}
 	.discounts__items__item__info h5{
