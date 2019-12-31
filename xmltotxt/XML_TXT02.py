@@ -1,6 +1,6 @@
 from xml.etree import cElementTree as ElementTree
-from tkinter import filedialog
-from tkinter import *
+#from tkinter import filedialog
+#from tkinter import *
 
 
 
