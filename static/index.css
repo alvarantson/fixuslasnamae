@@ -3,7 +3,7 @@
 		height: 22.2222vw;
 	}
 	.carousel-inner img{
-		width: 100vw !important;
+		width: 102vw !important;
 		margin-top: 0.5vh;
 	}
 	.carousel-control {
@@ -33,13 +33,13 @@
 		width: 0;
 		height: 0;
 		border-top: 2.5vw solid transparent;
-		border-right: 100vw solid #d32626;
+		border-right: 100vw solid #fab900;
 		border-bottom: 0 solid transparent;
 	}
 	.carousel-bottom__square{
 		width: 100vw;
 		height: 0.5vw;
-		background-color: #d32626;
+		background-color: #fab900;
 	}
 
 /* about us */

@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from navbar.models import contact, navbar_lang, langs, ad, social_media
 from .models import meist_lang, contactform
 import datetime
+from django.core.mail import send_mail
 # Create your views here.
 def meist(request):
 	if 'lang' not in request.session:
@@ -22,6 +23,11 @@ def meist(request):
 				e_mail=request.POST['email'],
 				letter=request.POST['letter'],
 				date=str(datetime.datetime.now().time())
+				)
+			send_mail(
+				"Fixus Lasnamae Kiri: "+request.POST["name"]+" - "+str(datetime.datetime.now().time()),
+				request.POST["name"]+"\n"+request.POST["phone"]+"\n"+request.POST["email"]+"\n"+str(datetime.datetime.now().time())+"\n"+request.POST["letter"]+"\n",
+				request.POST["email"],["alvarantson@gmail.com"]
 				)
 	ad2 = []
 	for nr in range(len(ad.objects.all())):

@@ -5,6 +5,7 @@ body{
 	font-family: ProximaNova;
 	font-weight: 250;
 	overflow-x: hidden;
+	width: 100vw;
 }
 .hidden {
 	display: none;
