@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import worker
+from meist.models import contactform
 
 # Create your views here.
 def login(request):
@@ -22,7 +23,7 @@ def login(request):
 		request.session['worker'] = "admin"
 	try:
 		print(request.session['worker'])
-		return render(request,'login-hub.html',context={})
+		return render(request,'login-hub.html',context={"mails":contactform.objects.all(), "workers":worker.objects.all()})
 	except:
 		pass
 

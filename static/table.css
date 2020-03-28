@@ -11,3 +11,9 @@ table{
 input{
 	width: 25em;
 }
+.workers {
+	margin-top: -13vh;
+}
+.mails h3 {
+	margin: 0 0 0 0;
+}
