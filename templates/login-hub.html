@@ -13,6 +13,7 @@
 		<div class="col-xs-6 workers">
 
 			{% if request.user.is_superuser %}
+			<h3><a href="/admin"><- ADMINPANEELILE</a></h3>
 			{% else %}
 			<form method="POST">{% csrf_token %}
 				<button type="submit" name="submit-btn" value="logout">log out</button>
@@ -20,6 +21,10 @@
 			{% endif %}
 			{% if request.user.is_superuser %}
 			<div class="col-xs-12">
+				<h3>Superkasutajad:</h3>
+				{% for i in superusers %}
+				<h4><b>{{ i }}</b></h4>
+				{% endfor %}
 				<h3>Töötajad:</h3>
 				{% for i in workers %}
 				<h4><b>{{ i.name }}</b> - Töök:{{ i.tookoda_priority }} - varuo:{{ i.varuosad_priority }} - kalender:{{ i.kalender_priority }}</h4>
@@ -27,7 +32,7 @@
 			</div>
 			{% endif %}
 			<h1>
-				<a href="/">esilehele</a><br>
+				<a href="/"><- esilehele</a><br>
 				<a href="/kalender">kalender</a><br>
 				<a href="/tookoda">tookoda</a><br>
 				<a href="/varuosad">varuosad</a><br>

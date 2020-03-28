@@ -14,6 +14,8 @@ input{
 .workers {
 	margin-top: -13vh;
 }
+.workers h3,
+.workers h4,
 .mails h3 {
 	margin: 0 0 0 0;
 }
