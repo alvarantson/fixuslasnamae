@@ -45,9 +45,9 @@
 		<div class="col-xs-6 mails">
 			<h3>Kirjad:</h3>
 			{% for i in mails %}
-			<h3><a href="#{{ i.e_mail }}" data-toggle="collapse">{{ i.nimi }} - {{ i.e_mail }}</a></h3>
+			<h3><a href='#a{{ i.date|cut:":"|cut:"." }}' data-toggle="collapse">{{ i.nimi }} - {{ i.e_mail }}</a></h3>
 
-			<div id="{{ i.e_mail }}" class="collapse">
+			<div id='a{{ i.date|cut:":"|cut:"." }}' class="collapse">
 			<h4><b>{{ i.nimi }}, {{ i.e_mail }}, {{ i.tel_nr }}</b><br>{{ i.date }}<br><br>{{ i.letter|linebreaks }}</h4>
 			</div>
 			{% endfor %}

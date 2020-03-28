@@ -17,13 +17,11 @@ def login(request):
 			else:
 				return HttpResponse('<a href="/login">vale parool/kasutajanimi</a>')
 		if request.POST['submit-btn'] == 'logout':
-			print(request.session['worker'])
 			del request.session['worker']
 			return HttpResponseRedirect('/login') #INDEX\i puhul '/'
 	if request.user.is_superuser:
 		request.session['worker'] = "admin"
 	try:
-		print(request.session['worker'])
 		return render(request,'login-hub.html',context={"mails":contactform.objects.all(), "workers":worker.objects.all(), "superusers":User.objects.all()})
 	except:
 		pass
