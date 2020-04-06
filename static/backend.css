@@ -1,0 +1,8 @@
+.footer,
+.navbar-spacer,
+.navbar {
+	display: none !important;
+}
+.main{
+	margin-top: 0 !important;
+}
