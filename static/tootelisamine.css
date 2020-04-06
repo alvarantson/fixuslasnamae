@@ -1,0 +1,19 @@
+.main{
+	margin-top: 15vh;
+}
+.item {
+	display: inline-block;
+	text-align: center;
+}
+.main {
+	text-align: center;
+}
+.translate {
+	display: none;
+}
+input[type=file] {
+    margin: 0 auto;
+}
+.back {
+	text-align: left;
+}

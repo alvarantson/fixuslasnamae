@@ -1,0 +1,38 @@
+.main{
+	margin-top: 15vh;
+}
+.item {
+	display: inline-block;
+	text-align: center;
+}
+.main {
+	text-align: center;
+}
+.translate {
+	display: none;
+}
+input[type=file] {
+    margin: 0 auto;
+}
+.back {
+	text-align: left;
+}
+.collapse-button {
+	cursor: pointer;
+}
+.table {
+	text-align: left;
+}
+.item_col {
+	display: inline-block;
+}
+img {
+	max-width: 250px;
+	max-height: 250px;
+}
+.nuke {
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	z-index: 999999999999999999999;
+}

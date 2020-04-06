@@ -12,5 +12,8 @@ class worker(models.Model):
 	tookoda_priority = models.CharField(max_length=999, choices=choices, default='')
 	varuosad_priority = models.CharField(max_length=999, choices=choices, default='')
 	kalender_priority = models.CharField(max_length=999, choices=choices, default='')
+	kalender2_priority = models.CharField(max_length=999, choices=choices, default='')
+	tooted_priority = models.CharField(max_length=999, choices=choices, default='')
+	kirjad_priority = models.CharField(max_length=999, choices=choices, default='')
 	def __str__(self):
 		return self.name

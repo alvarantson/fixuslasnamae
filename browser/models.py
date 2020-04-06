@@ -17,6 +17,7 @@ class browser_lang(models.Model):
 
 class toode(models.Model):
 	lang = models.CharField(max_length=3)
+	toode_id = models.CharField(max_length=999, default="")
 	name = models.CharField(max_length=999, blank=True)
 	price = models.CharField(max_length=9, blank=True)
 	prevprice = models.CharField(max_length=9, blank=True)

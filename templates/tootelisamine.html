@@ -1,0 +1,55 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{ contact.name }}</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static "tootelisamine.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% static "backend.css" %}">
+</head>
+<body>
+{% include "navbar/navbar.html" %}
+
+<div class="col-xs-12 main">
+		<h3 class="back"><a href="/login">tagasi</a></h3>
+		<h3 class="back"><a href="/tootehaldus">Halda tooteid</a></h3>
+		{% if notice != "" %}
+		<script type="text/javascript">
+			alert("{{ notice }}");
+		</script>
+		{% endif %}
+		<div class="col-xs-12">
+			<form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+			<div class="col-xs-12">
+				<h2><input type="checkbox" onclick="toggler()" name="translate" id="translate"><label for="translate">Tõlgi</label>	</h2>
+			</div>
+			{% for lang in langs %}
+			<div class="item" id="{{ lang }}" style="width: {{ lang_separator }}%">
+			<h3>{{ lang }}</h3>
+			<!--
+			<input type="checkbox" name="{{ lang }}_autotranslate" class="toggler translate" disabled><label class="toggler translate" for="{{ lang }}_autotranslate">autotõlgi tühjad</label><br><br>
+		-->
+			<input type="radio" name="main" value="{{ lang }}" class="toggler translate"><label class="toggler translate" for="main">peamine tõlge</label><br><br>
+			<input type="text" name="{{ lang }}_name" placeholder="nimi"><br><br>
+			<input type="text" name="{{ lang }}_price" placeholder="hind"><br><br>
+			<input type="text" name="{{ lang }}_prevprice" placeholder="eelnev hind"><br><br>
+			<textarea name="{{ lang }}_description" placeholder="kirjeldus"></textarea>
+			</div>
+			{% endfor %}
+				
+			<input type="checkbox" name="esilehele"><label for="esilehele">esilehele</label><br><br>
+			<input type="file" name="image" accept="image/*" required><br><br>
+			<button type="submit">Salvesta</button>
+			<script type="text/javascript">
+				function toggler() {
+					$(".toggler").toggleClass("translate");
+				}
+			</script>
+			</form>
+		</div>
+</div>
+
+{% include "navbar/footer.html" %}
+</body>
+</html>

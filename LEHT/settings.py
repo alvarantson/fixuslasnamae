@@ -31,6 +31,9 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'statistika',
+    'tootehaldus',
+    'tootelisamine',
     'hinnasilt',
     'reklaam',
     'login',

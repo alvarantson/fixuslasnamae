@@ -1,0 +1,14 @@
+.main{
+	margin-top: 15vh;
+}
+.view_item {
+	width: 10vw;
+	display: inline-grid;
+}
+.view_item .item_block {
+	background-color: #0058a2;
+	width: 50%;
+}
+.views {
+	margin-bottom: 5vh;
+}

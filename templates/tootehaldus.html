@@ -1,0 +1,83 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>{{ contact.name }}</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static "tootehaldus.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% static "backend.css" %}">
+</head>
+<body>
+{% include "navbar/navbar.html" %}
+
+<div class="col-xs-12 main">
+		<h3 class="back"><a href="/login">tagasi</a></h3>
+		<h3 class="back"><a href="/tootelisamine">Lisa toode</a></h3>
+		<button type="button" class="nuke" data-toggle="modal" data-target="#exampleModal">Kustuta kõik tooted</button>
+		{% if notice != "" %}
+		<script type="text/javascript">
+			alert("{{ notice }}");
+		</script>
+		{% endif %}
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		  <span aria-hidden="true">&times;</span>
+		</button>
+	  </div>
+	  <div class="modal-body">
+		Kindel et tahad kõiki tooteid kustutada?
+	  </div>
+	  <div class="modal-footer">
+		<form method="POST">{% csrf_token %}<button type="submit" name="submit-btn" value="nuke" class="btn btn-primary">Kustuta kõik tooted</button></form>
+		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	  </div>
+	</div>
+  </div>
+</div>
+
+			{% for toode in tooted %}
+			<div class="col-xs-12 table">
+				<div class="col-xs-6">
+					<a data-toggle="collapse" data-target="#collapse-{{ toode.0.toode_id }}" class="collapse-button">{{ toode.0 }} - {{ toode.1 }} - {{ toode.2 }}</a>
+				</div>
+				<div>
+					<form method="POST">{% csrf_token %}<button name="submit-btn" value="{{ toode.0.toode_id }}_delete">Kustuta</button></form>
+				</div>
+			</div>
+			<div id="collapse-{{ toode.0.toode_id }}" class="collapse">
+					<hr><br>
+		<div class="col-xs-12">
+			<form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+			{% for item in toode %}
+				<div style="width: {{ lang_separator }}%;" class="item_col">
+					<input type="text" name="{{ item.lang }}_lang" value="{{ item.lang }}" disabled><br>
+					<!--
+					<input type="text" name="{{ item.lang }}_toode_id" value="{{ item.toode_id }}" disabled><br>
+				-->
+					<input type="text" name="{{ item.lang }}_name" value="{{ item.name }}"><br>
+					<textarea name="{{ item.lang }}_description" rows="5">{{ item.description }}</textarea><br>
+				</div>
+				
+			{% endfor %}
+			<input type="text" name="price" value="{{ toode.0.price }}">€ uus<br>
+			<input type="text" name="prevprice" value="{{ toode.0.prevprice }}">€ vana<br>
+			<input type="text" name="esilehele" value="{{ toode.0.esilehele }}">y/n<br>
+			<a href="{{ toode.0.img.url }}" target="_blank"><img src="{{ toode.0.img.url }}"></a>
+			<input type="file" name="image" value="{{ toode.0.img.url }}"><br>
+			<button type="submit" value="{{ toode.0.toode_id }}_edit" name="submit-btn">Salvesta</button>
+			</form>
+		</div>
+					<br><br><br><br><br><hr>
+			</div>
+			{% endfor %}
+</div>
+
+{% include "navbar/footer.html" %}
+</body>
+</html>

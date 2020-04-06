@@ -3,8 +3,10 @@ from django.http import HttpResponse, HttpResponseRedirect
 from navbar.models import contact, navbar_lang, langs, ad, social_media
 from .models import index_lang, index_icon
 from browser.models import toode
+from statistika.views import collect_statistics
 # Create your views here.
 def index(request):
+	collect_statistics(request, "index")
 #	print(request.user.is_authenticated)
 #	if request.user.is_authenticated == False:
 #		return HttpResponseRedirect('/admin')

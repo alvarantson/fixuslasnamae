@@ -4,8 +4,10 @@ from navbar.models import contact, navbar_lang, langs, ad, social_media
 from .models import meist_lang, contactform
 import datetime
 from django.core.mail import send_mail
+from statistika.views import collect_statistics
 # Create your views here.
 def meist(request):
+	collect_statistics(request, "meist")
 	if 'lang' not in request.session:
 		request.session['lang'] = 'est'
 	flags = []
