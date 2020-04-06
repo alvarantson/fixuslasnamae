@@ -1,0 +1,27 @@
+.workers,
+.mails{
+	margin-top: 5vh;
+}
+th,
+td{
+	padding: 0 0 0 0 !important;
+}
+table{
+	width: 100vw;
+}
+input{
+	width: 25em;
+}
+.workers {
+}
+.workers h3,
+.workers h4,
+.mails h3 {
+	margin: 0 0 0 0;
+}
+.absolute {
+	position: absolute;
+	top: 0;
+	right: 1vh;
+	z-index: 99999999999999;
+}
