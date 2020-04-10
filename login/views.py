@@ -26,14 +26,15 @@ def is_worker(request):
 
 
 def login(request):
-	if bool(request.POST) == True:
+	notice = ""
+	if request.POST:
 		if request.POST['submit-btn'] == 'login':
 			if str(worker.objects.filter(name=request.POST['name'],password=request.POST['password'])) != '<QuerySet []>':
 				request.session['worker'] = request.POST['name']
 				is_worker(request)
 				return HttpResponseRedirect('/login') #INDEX\i puhul '/'
 			else:
-				return HttpResponse('<a href="/login">vale parool/kasutajanimi</a>')
+				notice = "vale parool"
 		if request.POST['submit-btn'] == 'logout':
 			del request.session['worker']
 			return HttpResponseRedirect('/login') #INDEX\i puhul '/'
@@ -43,4 +44,4 @@ def login(request):
 	except:
 		pass
 
-	return render(request, 'login.html', context={})
+	return render(request, 'login.html', context={"notice":notice})

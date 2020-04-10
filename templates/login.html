@@ -23,9 +23,16 @@
 		</div>
 	</a>
 	<br><br><br><br>
+	{% if notice != "" %}
+	<a class="item-a" href="#">
+		<div class="item logout">
+			{{ notice }}
+		</div>
+	</a>
+	{% endif %}
 	<form method="POST"> {% csrf_token %}
-		<input type="text" name="name" placeholder="kasutajanimi"><br>
-		<input type="password" name="password" placeholder="******"><br>
+		<input type="text" name="name" placeholder="kasutajanimi" required><br>
+		<input type="password" name="password" placeholder="******" required><br>
 		<button class="item" type="submit" name="submit-btn" value="login">LOGI SISSE</button>
 	</form>
 </div>

@@ -48,10 +48,6 @@ input{
 .item .glyphicon {
 	float: right;
 }
-.logout {
-	background-color: red !important;
-	border: none;
-}
 .email-listing {
 	background-color: var(--main-color);
 	background-alpha: 1;
@@ -79,4 +75,17 @@ input{
 	font-size: 2vh !important;
 	margin-top: 1vh;
 	text-align: center;
+	padding: 10px 25px 10px 25px;
+}
+table {
+	width: 100%
+}
+
+.logout {
+	background-color: red !important;
+	border: none;
+}
+.unimportant {
+	background-color: gray !important;
+	border: none;
 }
