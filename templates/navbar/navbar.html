@@ -61,8 +61,12 @@
 			<a href="/browser">{{ navbar_lang.browser }}</a>
 			<a href="/repair">{{ navbar_lang.repair }}</a>
 			<!--<a href="/#">{{ navbar_lang.carrepair }}</a>-->
-			<a target="_blank" href="http://fixus24.ee/">{{ navbar_lang.e_store }}</a>
-			<a target="_blank" href="https://fixus.ee/autokaubad/">{{ navbar_lang.locations }}</a>
+			<form method="POST"> {% csrf_token %}
+				<button class="external" target="_blank" type="submit" name="submit-btn" value="EXTERNALhttp://fixus24.ee/">{{ navbar_lang.e_store }}</button><br>
+			</form>
+			<form method="POST"> {% csrf_token %}
+				<button class="external" target="_blank" type="submit" name="submit-btn" value="EXTERNALhttps://fixus.ee/autokaubad/">{{ navbar_lang.locations }}</button><br>
+			</form>
 		</div>
 		<div class="col-xs-2"></div>
 	</div>
@@ -79,9 +83,12 @@
 			<a href="/meist">{{ navbar_lang.browser }}</a><br>
 			<a href="/repair">{{ navbar_lang.repair }}</a><br>
 			<!--<a href="/#">{{ navbar_lang.carrepair }}</a><br>-->
-			<a target="_blank" href="http://fixus24.ee/">{{ navbar_lang.e_store }}</a><br>
-			<a target="_blank" href="https://fixus.ee/autokaubad/">{{ navbar_lang.locations }}</a><br>
-
+			<form method="POST"> {% csrf_token %}
+				<button class="external" target="_blank" type="submit" name="EXTERNALhttp://fixus24.ee/">{{ navbar_lang.e_store }}</button><br>
+			</form>
+			<form method="POST"> {% csrf_token %}
+				<button class="external" target="_blank" type="submit" name="EXTERNALhttps://fixus.ee/autokaubad/">{{ navbar_lang.locations }}</button><br>
+			</form>
 			<div class="navbar-phone__content__langs" align="center">
 				{% for flag in flags %}
 				<div class="col-xs-12 navbar-phone__content__langs__item">

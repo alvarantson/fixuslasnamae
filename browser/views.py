@@ -4,8 +4,13 @@ from navbar.models import contact, navbar_lang, langs, ad, social_media
 from .models import browser_lang
 from .models import toode
 from statistika.views import collect_statistics
+from navbar.views import linker
 # Create your views here.
 def browser(request):
+	try:
+		return linker(request)
+	except:
+		pass
 	collect_statistics(request, "browser")
 	if 'lang' not in request.session:
 		request.session['lang'] = 'est'

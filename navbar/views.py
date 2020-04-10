@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from navbar.models import contact, navbar_lang, langs
-from .models import REPLACE_lang
+from .models import navbar_lang
+from statistika.views import collect_statistics
 # Create your views here.
 def REPLACE(request):
 	if 'lang' not in request.session:
@@ -19,3 +20,14 @@ def REPLACE(request):
 		'flags':flags,
 		'lang':REPLACE_lang.objects.get(lang=request.session['lang'])
 		})
+
+def linker(request):
+	print(request.POST["submit-btn"].split("EXTERNAL")[1])
+	if request.POST:
+		if "EXTERNAL" in request.POST["submit-btn"]:
+			url = request.POST["submit-btn"].split("EXTERNAL")[1]
+			collect_statistics(request, url)
+			return HttpResponseRedirect(url)
+		else:
+			raise EnvironmentError
+	

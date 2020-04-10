@@ -4,8 +4,13 @@ from navbar.models import contact, navbar_lang, langs, ad, social_media
 from .models import index_lang, index_icon
 from browser.models import toode
 from statistika.views import collect_statistics
+from navbar.views import linker
 # Create your views here.
 def index(request):
+	try:
+		return linker(request)
+	except:
+		pass
 	collect_statistics(request, "index")
 #	print(request.user.is_authenticated)
 #	if request.user.is_authenticated == False:

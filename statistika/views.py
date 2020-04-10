@@ -66,7 +66,7 @@ def statistika(request):
 
 def collect_statistics(request, current_app):
 	try:
-		print("Not logged in stats, worker: "+request.session["worker"])
+		print("Visit not logged in stats, logged in as worker: "+request.session["worker"])
 	except:
 		if not request.user.is_authenticated:
 			if not request.session.session_key:
@@ -79,4 +79,4 @@ def collect_statistics(request, current_app):
 			
 			statistics_entry.objects.create(appname=current_app, session_key=session_key, referer=prev_app)
 		else:
-			print("Not logged in stats, user: "+request.user.username)
+			print("Visit not logged in stats, logged in as user: "+request.user.username)
