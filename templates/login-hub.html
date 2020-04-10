@@ -23,7 +23,7 @@
 				</div>
 			</a>
 			<a class="item-a" href="/admin">
-				<div class="item">ADMINPANEELILE 
+				<div class="item logout">ADMINPANEELILE 
 					<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
 				</div>
 			</a>
@@ -53,7 +53,7 @@
 				{% endif %}
 				{% if request.session.kalender2_priority != "M" %}
 				<a class="item-a" href="/kalender2">
-					<div class="item">KALENDER (2) - PARANDUS 
+					<div class="item">KALENDER (2) - TÖÖKODA 
 						<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 					</div>
 				</a>
@@ -145,6 +145,14 @@
 		</div>
 		{% if request.session.kirjad_priority != "M" %}
 		<div class="col-xs-12 col-md-5 mails">
+			{% if request.user.is_superuser %}
+			<a class="item-a" href='/admin/meist/contactform'>
+				<div class="email-listing logout">
+					HALDA EMAILE
+					<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> 
+				</div>
+			</a>
+			{% endif %}
 			{% for i in mails %}
 			<a class="item-a" href='#a{{ i.date|cut:":"|cut:"." }}' data-toggle="collapse">
 				<div class="email-listing">

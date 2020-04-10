@@ -49,7 +49,7 @@ input{
 	float: right;
 }
 .logout {
-	background-color: red;
+	background-color: red !important;
 	border: none;
 }
 .email-listing {
