@@ -31,11 +31,11 @@ def meist(request):
 				letter=request.POST['letter'],
 				date=str(datetime.datetime.now().time())
 				)
-			send_mail(
-				"Fixus Lasnamae Kiri: "+request.POST["name"]+" - "+str(datetime.datetime.now().time()),
-				request.POST["name"]+"\n"+request.POST["phone"]+"\n"+request.POST["email"]+"\n"+str(datetime.datetime.now().time())+"\n"+request.POST["letter"]+"\n",
-				request.POST["email"],["alvarantson@gmail.com"]
-				)
+#			send_mail(
+#				"Fixus Lasnamae Kiri: "+request.POST["name"]+" - "+str(datetime.datetime.now().time()),
+#				request.POST["name"]+"\n"+request.POST["phone"]+"\n"+request.POST["email"]+"\n"+str(datetime.datetime.now().time())+"\n"+request.POST["letter"]+"\n",
+#				request.POST["email"],["alvarantson@gmail.com"]
+#				)
 	ad2 = []
 	for nr in range(len(ad.objects.all())):
 		ad2.append(nr)
