@@ -13,66 +13,147 @@
 		<h4>Sisselogitud: <b>{{ logged_in }}</b></h4>
 	</div>
 	{% include "navbar/navbar.html" %}
-	<div class="main col-xs-12">
-		<div class="col-xs-6 workers">
+	<div class="main col-xs-12 col-md-12">
+		<div class="col-xs-12 col-md-3 workers">
 
 			{% if request.user.is_superuser %}
-			<h3><a href="/admin"><- ADMINPANEELILE</a></h3>
+			<a class="item-a" href="/admin/logout">
+				<div class="logout item">
+					LOGI VÄLJA 
+				</div>
+			</a>
+			<a class="item-a" href="/admin">
+				<div class="item">ADMINPANEELILE 
+					<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+				</div>
+			</a>
 			{% else %}
 			<form method="POST">{% csrf_token %}
-				<button type="submit" name="submit-btn" value="logout">log out</button>
+				<button type="submit" name="submit-btn" value="logout" class="logout item">
+				LOG OUT</button>
 			</form>
 			{% endif %}
-			{% if request.user.is_superuser %}
-			<div class="col-xs-12">
-				<h3>Superkasutajad:</h3>
-				{% for i in superusers %}
-				<h4><b>{{ i }}</b></h4>
-				{% endfor %}
-				<h3>Töötajad:</h3>
-				{% for i in workers %}
-				<h4><b>{{ i.name }}</b> - Töök:{{ i.tookoda_priority }} - varuo:{{ i.varuosad_priority }} - kalender:{{ i.kalender_priority }} - kalender2:{{ i.kalender2_priority }} - Tooted:{{ i.tooted_priority }}</h4>
-				{% endfor %}
-			</div>
-			{% endif %}
-			<h1>
-				<a href="/"><- esilehele</a><br>
+			
+			<div class="buttons-menu">
+				
+				<a class="item-a" href="/">
+					<div class="item">ESILEHELE 
+						<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					</div>
+				</a>
+
+				<br>
+
 				{% if request.session.kalender_priority != "M" %}
-				<a href="/kalender">kalender (1) - pood</a><br>
+				<a class="item-a" href="/kalender">
+					<div class="item">KALENDER (1) - POOD 
+						<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+					</div>
+				</a>
 				{% endif %}
 				{% if request.session.kalender2_priority != "M" %}
-				<a href="/kalender2">kalender (2) - parandus</a><br>
+				<a class="item-a" href="/kalender2">
+					<div class="item">KALENDER (2) - PARANDUS 
+						<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+					</div>
+				</a>
 				{% endif %}
 				{% if request.session.tookoda_priority != "M" %}
-				<a href="/tookoda">tookoda</a><br>
+				<a class="item-a" href="/tookoda">
+					<div class="item">TOOKODA 
+						<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+					</div>
+				</a>
 				{% endif %}
 				{% if request.session.varuosad_priority != "M" %}
-				<a href="/varuosad">varuosad</a><br>
+				<a class="item-a" href="/varuosad">
+					<div class="item">VARUOSAD 
+						<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+					</div>
+				</a>
 				{% endif %}
 				
+				<br>
 				
-				<a href="/hinnasilt">hinnasilt</a><br>
-				<a href="/menu">menüü</a><br>
+				<a class="item-a" href="/hinnasilt">
+					<div class="item">HINNASILT 
+						<span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+					</div>
+				</a>
 				<br>
 				{% if request.session.tooted_priority != "M" %}
-				<a href="/tootelisamine">Toodete lisamine</a><br>
-				<a href="/tootehaldus">Toodete haldus</a><br>
+				<a class="item-a" href="/tootelisamine">
+					<div class="item">TOODETE LISAMINE 
+						<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+					</div>
+				</a>
+				<a class="item-a" href="/tootehaldus">
+					<div class="item">TOODETE HALDUS 
+						<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+					</div>
+				</a>
 				{% endif %}
 				<br>
 				{% if request.user.is_superuser %}
-				<a href="/loader">Lae andmeid sisse</a><br>
-				<a href="/statistika">statistika</a><br>
+				<a class="item-a" href="/loader">
+					<div class="item">LAE ANDMEID SISSE 
+						<span class="glyphicon glyphicon-floppy-open" aria-hidden="true"></span>
+					</div>
+				</a>
+				<a class="item-a" href="/statistika">
+					<div class="item">STATISTIKA 
+						<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+					</div>
+				</a>
 				{% endif %}
-			</h1>
+			</div>
 
 		</div>
+		<div class="col-xs-12 col-md-4 workers">
+			<br><br>
+			{% if request.user.is_superuser %}
+			<div class="col-xs-12 col-md-12">
+				<h3><b><u>SUPERKASUTAJAD:</u></b></h3>
+				{% for i in superusers %}
+				<h3>{{ i }}</h3>
+				{% endfor %}
+				<br>
+				<h3><b><u>TÖÖTAJAD:</u></b></h3>
+				<br>
+				<table class="col-xs-12">
+					<tr class="main">
+						<th scope="row">#</th>
+						<th>TÖÖK</th>
+						<th>VARU</th>
+						<th>KAL1</th>
+						<th>KAL2</th>
+						<th>TOOTED</th>
+					</tr>
+					{% for i in workers %}
+					<tr>
+						<td scope="row"><b>{{ i.name }}</b></td>
+						<td>{{ i.tookoda_priority }}</td>
+						<td>{{ i.varuosad_priority }}</td>
+						<td>{{ i.kalender_priority }}</td>
+						<td>{{ i.kalender2_priority }}</td>
+						<td>{{ i.tooted_priority }}</td>
+					</tr>
+					{% endfor %}
+				</table>
+			</div>
+			{% endif %}
+		</div>
 		{% if request.session.kirjad_priority != "M" %}
-		<div class="col-xs-6 mails">
-			<h3>Kirjad:</h3>
+		<div class="col-xs-12 col-md-5 mails">
 			{% for i in mails %}
-			<h3><a href='#a{{ i.date|cut:":"|cut:"." }}' data-toggle="collapse">{{ i.nimi }} - {{ i.e_mail }}</a></h3>
+			<a class="item-a" href='#a{{ i.date|cut:":"|cut:"." }}' data-toggle="collapse">
+				<div class="email-listing">
+					{{ i.nimi }} - {{ i.e_mail }}
+					<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> 
+				</div>
+			</a>
 
-			<div id='a{{ i.date|cut:":"|cut:"." }}' class="collapse">
+			<div id='a{{ i.date|cut:":"|cut:"." }}' class="collapse mails-inner">
 			<h4><b>{{ i.nimi }}, {{ i.e_mail }}, {{ i.tel_nr }}</b><br>{{ i.date }}<br><br>{{ i.letter|linebreaks }}</h4>
 			</div>
 			{% endfor %}

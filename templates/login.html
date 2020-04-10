@@ -5,18 +5,31 @@
     <meta charset="utf-8">
     <title>{{ contact.name }}</title>
 
-	<link rel="stylesheet" type="text/css" href="{% static "table.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% static "login.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% static "backend.css" %}">
 </head>
 <body>
 {% include "navbar/navbar.html" %}
-
-<div class="col-xs-12 main">
+<div class="col-xs-12 col-md-4"></div>
+<div class="col-xs-12 col-md-4 main login">
+	<a class="item-a" href="/">
+		<div class="item">
+			TAGASI PEALEHELE
+		</div>
+	</a>
+	<a class="item-a" href="/admin">
+		<div class="item">
+			ADMINHALDUS
+		</div>
+	</a>
+	<br><br><br><br>
 	<form method="POST"> {% csrf_token %}
 		<input type="text" name="name" placeholder="kasutajanimi"><br>
 		<input type="password" name="password" placeholder="******"><br>
-		<button type="submit" name="submit-btn" value="login">Log in</button>
+		<button class="item" type="submit" name="submit-btn" value="login">LOGI SISSE</button>
 	</form>
 </div>
+<div class="col-xs-12 col-md-4"></div>
 
 {% include "navbar/footer.html" %}
 </body>
