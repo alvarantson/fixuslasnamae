@@ -18,7 +18,7 @@ def tootehaldus(request):
 		if "delete" in request.POST["submit-btn"]:
 			for item in toode.objects.filter(toode_id=request.POST["submit-btn"].split("_")[0]):
 				item.delete()
-				notice = "Toode: "+request.POST["submit-btn"].split("_")[0]+" edukalt eemaldatud!"
+				notice = "Toode edukalt eemaldatud!"
 		# NUKE TOODE
 		elif "nuke" in request.POST["submit-btn"]:
 			for item in toode.objects.all():
@@ -40,7 +40,7 @@ def tootehaldus(request):
 				description = request.POST[keel.lang+"_description"]
 				toode.objects.get(lang=keel.lang,toode_id=ID).delete()
 				toode.objects.create(toode_id= ID, lang=keel.lang, name=name, price=price, prevprice=prevprice, description=description, esilehele=esilehele, img=img)
-			notice = "Toode: "+ID+" edukalt muudetud!"
+			notice = "Toode edukalt muudetud!"
 
 	toote_id = toode.objects.all().values("toode_id").distinct()
 	tooted = []

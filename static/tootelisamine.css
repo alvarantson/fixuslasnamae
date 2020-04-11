@@ -23,12 +23,14 @@ input[type=file] {
 	text-align: left;
 }
 .boxer {
+	display: inline-block;
 	background-color: var(--main-color);
-	font-size: 2.5vh;
+	font-size: 2.2vh;
 	padding: 10px 25px 10px 25px;
 	color: white;
 	font-weight: 200;
 	width: 100%;
+	margin-top: 1vh;
 }
 .danger {
 	background-color: red !important;
@@ -38,6 +40,10 @@ input {
 	width: 75%;
 	font-size: 2vh !important;
 	padding: 10px 25px 10px 25px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: solid thin rgba(150,150,150,0.4);
 }
 .nav { 
 	max-width: 20%; 
@@ -45,4 +51,56 @@ input {
 	text-align: left;
 	padding: 10px 25px 10px 25px;
 	float: left
+}
+.unimportant {
+	background-color: rgba(150,150,150,0.4);
+	border:  none;
+}
+.file {
+}
+.file input{
+	width: 100%;
+	text-align: center;
+	padding-left: 27.5%;
+	padding-right: 22.5%;
+	border: none;
+}
+.inputs label {
+	font-weight: 200 !important;
+	font-size: 2vh;
+	float: left !important;
+	margin-left: 12.5%;
+	margin-top: 2vh;
+}
+
+.nuke {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	background-color: red;
+	font-size: 2.5vh;
+	padding: 10px 25px 10px 25px;
+	z-index: 99999999999999999999;
+	color: white;
+	border: none;
+}
+.toode {
+	background-color: var(--main-color);
+	font-size: 2.5vh;
+	padding: 10px 25px 10px 25px;
+	z-index: 99999999999999999999;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+.toode div a {
+	text-decoration: none !important;
+	color: white;
+}
+.toode button {
+	background-color: rgba(0,0,0,0);
+	border: none;
+}
+.item_col {
+	display: inline-block;
 }
