@@ -46,31 +46,31 @@ def tootelisamine(request):
 	if request.POST:
 
 		# IF USING TRANSLATE
-#		try: 
-		test = request.POST["translate"]
-		main = request.POST["main"]
-		toode_id = randomString()
-		picture = request.FILES["image"]
-		try:
-			esilehele = request.POST["esilehele"]
-			esilehele = "y"
+		try: 
+			test = request.POST["translate"]
+			main = request.POST["main"]
+			toode_id = randomString()
+			picture = request.FILES["image"]
+			try:
+				esilehele = request.POST["esilehele"]
+				esilehele = "y"
+			except:
+				esilehele = "n"
+			for lang in langs.objects.all():
+				price = request.POST[main+"_price"]
+				prevprice = request.POST[main+"_prevprice"]
+				if main == lang.lang:
+					name = request.POST[main+"_name"]
+					description = request.POST[main+"_description"]
+				else:
+					tekst = [request.POST[main+"_name"],request.POST[main+"_description"]]
+					sisu = tolgi(tekst, main, lang.lang)
+					name = sisu[0]
+					description = sisu[1]
+				toode.objects.create(toode_id= toode_id, lang=lang.lang, name=name, price=price, prevprice=prevprice, description=description, esilehele=esilehele, img=picture)
+			notice = "Toode edukalt lisatud ja tõlgitud!"
 		except:
-			esilehele = "n"
-		for lang in langs.objects.all():
-			price = request.POST[main+"_price"]
-			prevprice = request.POST[main+"_prevprice"]
-			if main == lang.lang:
-				name = request.POST[main+"_name"]
-				description = request.POST[main+"_description"]
-			else:
-				tekst = [request.POST[main+"_name"],request.POST[main+"_description"]]
-				sisu = tolgi(tekst, main, lang.lang)
-				name = sisu[0]
-				description = sisu[1]
-			toode.objects.create(toode_id= toode_id, lang=lang.lang, name=name, price=price, prevprice=prevprice, description=description, esilehele=esilehele, img=picture)
-		notice = "Toode edukalt lisatud ja tõlgitud!"
-#		except:
-#			notice = "Toote lisamine ja tõlkimine EBAÕNNESTUS!"
+			notice = "Toote lisamine ja tõlkimine EBAÕNNESTUS!"
 
 		# IF NOT TRANSLATING
 		try: 

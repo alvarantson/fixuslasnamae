@@ -51,6 +51,7 @@
 
 			{% for toode in tooted %}
 			<div class="col-xs-12 table toode">
+				<img src="{{ toode.0.img.url }}">
 				<div class="col-xs-9">
 					<a data-toggle="collapse" data-target="#collapse-{{ toode.0.toode_id }}" class="collapse-button">{{ toode.0 }} - {{ toode.1 }} - {{ toode.2 }}</a>
 				</div>
@@ -86,11 +87,11 @@
 
 				<div class="col-xs-12 inputs"><label>Esilehele: (y/n)</label></div>
 				<div class="col-xs-12 inputs"><input type="text" name="esilehele" value="{{ toode.0.esilehele }}"></div>
-
+<!--
 				<div class="col-xs-12">
 					<a href="{{ toode.0.img.url }}" target="_blank"><img src="{{ toode.0.img.url }}"></a>
 				</div>
-				
+-->
 				<div class="col-xs-12 file boxer">
 					<input type="file" name="image" accept="image/*" required>
 				</div>
