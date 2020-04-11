@@ -12,3 +12,12 @@
 .views {
 	margin-bottom: 5vh;
 }
+.boxer {
+	background-color: var(--main-color);
+	font-size: 2.5vh;
+	color: white;
+	text-align: center;
+	padding: 10px 25px 10px 25px; 
+	margin-top: 0.25vh;
+	margin-bottom: 0.25vh;
+}

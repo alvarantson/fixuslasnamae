@@ -17,8 +17,6 @@ input{
 .mails h3 {
 	margin: 0 0 0 0;
 }
-.nav {
-}
 .boxer {
 	background-color: var(--main-color);
 	font-size: 2.5vh;
@@ -27,4 +25,7 @@ input{
 	padding: 10px 25px 10px 25px; 
 	margin-top: 0.25vh;
 	margin-bottom: 0.25vh;
+}
+.col-xs-12 {
+	padding: 0 0 0 0 !important;
 }

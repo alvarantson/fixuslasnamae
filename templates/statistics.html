@@ -12,12 +12,16 @@
 {% include "navbar/navbar.html" %}
 
 <div class="col-xs-12 main">
-		<h3><a href="/login">tagasi</a></h3>
+	<div class="col-xs-12 col-md-2">
+		<a href="/login">
+			<div class="boxer">TAGASI</div>
+		</a>
+	</div>
 
 		<div class="col-xs-12 views">	
 			<h3>lehe vaadete arv</h3>
 			{% for item in site_views %}
-			<div class="view_item" style="width: ">
+			<div class="view_item">
 				<div class="item_block" style="height: {{ item.block_height }}vh"></div>
 				<p>{{ item.appname }}<br>{{ item.count }}</p>
 			</div>
@@ -30,7 +34,7 @@
 			{% for item in site_referals %}
 				<h4>Rakendusse: <b>{{ item.appname }}</b></h4>
 				{% for row in item.referers %}
-					<div class="view_item" style="width: ">
+					<div class="view_item">
 						<div class="item_block" style="height: {{ row.2 }}vh"></div>
 						<p>{{ row.0 }}<br>{{ row.1 }}</p>
 					</div>
