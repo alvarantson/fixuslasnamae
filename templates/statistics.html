@@ -18,6 +18,14 @@
 		</a>
 	</div>
 
+<div class="col-xs-12 ajalugu">
+	<form method="POST"> {% csrf_token %}
+		<input type="date" name="date1" value="{{ date1 }}">
+		<input type="date" name="date2" value="{{ date2 }}">
+		<button type="submit" name="submit-btn" value="inquiry">Otsi</button>
+	</form>
+</div>
+
 		<div class="col-xs-12 views">	
 			<h3>lehe vaadete arv</h3>
 			{% for item in site_views %}

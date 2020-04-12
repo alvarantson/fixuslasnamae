@@ -21,3 +21,7 @@
 	margin-top: 0.25vh;
 	margin-bottom: 0.25vh;
 }
+button,
+input {
+	font-size: 2.5vh !important;
+}

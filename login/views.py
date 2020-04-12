@@ -40,7 +40,7 @@ def login(request):
 			return HttpResponseRedirect('/login') #INDEX\i puhul '/'
 	is_worker(request)
 	try:
-		return render(request,'login-hub.html',context={"mails":contactform.objects.all(), "workers":worker.objects.all(), "superusers":User.objects.all(), "logged_in":request.session["worker"]})
+		return render(request,'login-hub.html',context={"mails":contactform.objects.all()[::-1], "workers":worker.objects.all(), "superusers":User.objects.all(), "logged_in":request.session["worker"]})
 	except:
 		pass
 
