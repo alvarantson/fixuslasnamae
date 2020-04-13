@@ -23,17 +23,52 @@
 	<div class="col-xs-12 discounts__items">
 		{% for toode in tooted %}
 		<!-- css overwrite col-lg-2 !!! -->
-		<div class="col-xs-12 col-lg-2 discounts__items__item">
-			<div class="col-xs-12 discounts__items__item__img">
-				<img src="{{ toode.img.url }}">
+		<a data-toggle="modal" data-target="#toode-{{ toode.toode_id }}">
+			<div class="col-xs-12 col-lg-2 discounts__items__item">
+				<div class="col-xs-12 discounts__items__item__img">
+					<img src="{{ toode.img.url }}">
+				</div>
+				<div class="col-xs-12 discounts__items__item__info">
+					<h4>{{ toode.name }}</h4>
+					<h5>{{ toode.price }}<sup>€</sup></h5>
+					<h6>{{ lang.enne }}: {{ toode.prevprice }}€</h6>
+				</div>
 			</div>
-			<div class="col-xs-12 discounts__items__item__info">
-				<h4>{{ toode.name }}</h4>
-				<p>{{ toode.description }}</p>
-				<h5>{{ toode.price }}<sup>€</sup></h5>
-				<h6>{{ lang.enne }}: {{ toode.prevprice }}€</h6>
-			</div>
-		</div>
+		</a>
+		<!-- Modal -->
+<div class="toode__modal modal fade" id="toode-{{ toode.toode_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+      	<div class="col-xs-12 closer"><a data-dismiss="modal">X</a></div>
+        <div class="col-xs-12 col-md-2 image">
+        	<img src="{{ toode.img.url }}">
+        </div>
+        <div class="col-xs-12 col-md-8 info">
+        	<h2><b>{{ toode.name }}</b></h2>
+			<p>{{ toode.description|linebreaks }}</p>
+			<table class="table">
+				{% for row in toode.specs_as_table %}
+				<tr>
+					{% for item in row %}
+					<td>
+					{% if item == row.0 %}<b>{% endif %}
+					{{ item }}
+					{% if item == row.0 %}</b>{% endif %}
+					</td>
+					{% endfor %}
+				</tr>
+				{% endfor %}
+			</table>
+			<h5>{{ toode.price }}<sup>€</sup></h5>
+			<h6>{{ lang.enne }}: {{ toode.prevprice }}€</h6>
+        </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
 		{% endfor %}
 	</div>
 </div>

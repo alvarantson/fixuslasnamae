@@ -38,8 +38,9 @@ def tootehaldus(request):
 				lang = keel.lang
 				name = request.POST[keel.lang+"_name"]
 				description = request.POST[keel.lang+"_description"]
+				specs = request.POST[keel.lang+"_specs"]
 				toode.objects.get(lang=keel.lang,toode_id=ID).delete()
-				toode.objects.create(toode_id= ID, lang=keel.lang, name=name, price=price, prevprice=prevprice, description=description, esilehele=esilehele, img=img)
+				toode.objects.create(toode_id= ID, lang=keel.lang, name=name, price=price, prevprice=prevprice, description=description, esilehele=esilehele, img=img, specs=specs)
 			notice = "Toode edukalt muudetud!"
 
 	toote_id = toode.objects.all().values("toode_id").distinct()

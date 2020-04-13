@@ -62,14 +62,17 @@ def tootelisamine(request):
 				if main == lang.lang:
 					name = request.POST[main+"_name"]
 					description = request.POST[main+"_description"]
+					specs = request.POST[main+"_specs"]
 				else:
-					tekst = [request.POST[main+"_name"],request.POST[main+"_description"]]
+					tekst = [request.POST[main+"_name"],request.POST[main+"_description"],request.POST[main+"_specs"]]
 					sisu = tolgi(tekst, main, lang.lang)
 					name = sisu[0]
 					description = sisu[1]
-				toode.objects.create(toode_id= toode_id, lang=lang.lang, name=name, price=price, prevprice=prevprice, description=description, esilehele=esilehele, img=picture)
+					specs = sisu[2].replace(", ",";")
+				toode.objects.create(toode_id= toode_id, lang=lang.lang, name=name, price=price, prevprice=prevprice, description=description, esilehele=esilehele, img=picture, specs=specs)
 			notice = "Toode edukalt lisatud ja tõlgitud!"
-		except:
+		except Exception as e:
+			print(str(e))
 			notice = "Toote lisamine ja tõlkimine EBAÕNNESTUS!"
 
 		# IF NOT TRANSLATING
@@ -88,6 +91,7 @@ def tootelisamine(request):
 				price = request.POST[lang.lang+"_price"]
 				prevprice = request.POST[lang.lang+"_prevprice"]
 				description = request.POST[lang.lang+"_description"]
-				toode.objects.create(toode_id= toode_id, lang=lang.lang, name=name, price=price, prevprice=prevprice, description=description, esilehele=esilehele, img=picture)
+				specs = request.POST[lang.lang+"_specs"]
+				toode.objects.create(toode_id= toode_id, lang=lang.lang, name=name, price=price, prevprice=prevprice, description=description, esilehele=esilehele, img=picture, specs=specs)
 				notice = "Toode lisatud edukalt!"
 	return render(request, "tootelisamine.html", context={"langs":langs.objects.all(), "lang_separator": float(99)/float(len(langs.objects.all())), "notice":notice})

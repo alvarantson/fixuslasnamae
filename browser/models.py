@@ -22,6 +22,7 @@ class toode(models.Model):
 	price = models.CharField(max_length=9, blank=True)
 	prevprice = models.CharField(max_length=9, blank=True)
 	description = models.TextField(blank=True)
+	specs = models.TextField(blank=True)
 	esilehele = models.CharField('esilehele y/n', max_length=1, default='n')
 	img = models.ImageField(blank=True)
 	def __str__(self):
@@ -29,4 +30,8 @@ class toode(models.Model):
 			return 'Esilehel: ' + self.lang+' - '+self.name
 		else:
 			return self.lang+' - '+self.name
-		
+	def specs_as_table(self):
+		specs_list = []
+		for i in self.specs.split("\n"):
+			specs_list.append(i.split(";"))
+		return specs_list
