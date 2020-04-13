@@ -47,6 +47,10 @@
         <div class="col-xs-12 col-md-8 info">
         	<h2><b>{{ toode.name }}</b></h2>
 			<p>{{ toode.description|linebreaks }}</p>
+			<h5>{{ toode.price }}<sup>€</sup></h5>
+			<h6>{{ lang.enne }}: {{ toode.prevprice }}€</h6>
+		</div>
+        <div class="col-xs-12 info">
 			<table class="table">
 				{% for row in toode.specs_as_table %}
 				<tr>
@@ -60,8 +64,9 @@
 				</tr>
 				{% endfor %}
 			</table>
-			<h5>{{ toode.price }}<sup>€</sup></h5>
-			<h6>{{ lang.enne }}: {{ toode.prevprice }}€</h6>
+        </div>
+        <div class="col-xs-12 info">
+        	
         </div>
       </div>
       <div class="modal-footer">
