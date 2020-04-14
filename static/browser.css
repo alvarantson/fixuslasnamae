@@ -94,7 +94,7 @@
 	z-index: 99999999 !important;
 }
 .toode__modal .modal-dialog {
-	min-width: 95vw;
+	min-width: 85vw;
 	height: 100%;
 }
 .toode__modal .modal-content {
