@@ -25,6 +25,14 @@ def repair(request):
 	hetkel = ""
 	asd = []
 	for i in menu.objects.filter(lang=request.session['lang']):
+		if i.item_cat[len(i.item_cat)-1] == " ":
+			lang = i.lang
+			cat = i.item_cat
+			name = i.item_name
+			price = i.item_price
+			menu.objects.get(lang=lang, item_cat=cat, item_name=name, item_price=price).delete()
+			menu.objects.create(lang=lang, item_cat=cat[:-1], item_name=name, item_price=price)
+			i = menu.objects.get(lang=lang, item_cat=cat[:-1], item_name=name, item_price=price)
 		asd.append(i)
 	asd = sorted(asd, key=lambda k: k.item_cat) 
 	for i in asd:
