@@ -28,6 +28,9 @@ def is_worker(request):
 def login(request):
 	notice = ""
 	if request.POST:
+		if request.POST['submit-btn'] == 'notes':
+			note.objects.all()[0].delete()
+			note.objects.create(note=request.POST["notes"])
 		if request.POST['submit-btn'] == 'login':
 			if str(worker.objects.filter(name=request.POST['name'],password=request.POST['password'])) != '<QuerySet []>':
 				request.session['worker'] = request.POST['name']
@@ -40,7 +43,7 @@ def login(request):
 			return HttpResponseRedirect('/login') #INDEX\i puhul '/'
 	is_worker(request)
 	try:
-		return render(request,'login-hub.html',context={"mails":contactform.objects.all()[::-1], "workers":worker.objects.all(), "superusers":User.objects.all(), "logged_in":request.session["worker"]})
+		return render(request,'login-hub.html',context={"mails":contactform.objects.all()[::-1], "workers":worker.objects.all(), "superusers":User.objects.all(), "logged_in":request.session["worker"], "notes": note.objects.all()[0]})
 	except:
 		pass
 

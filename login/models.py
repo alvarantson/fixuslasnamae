@@ -17,3 +17,6 @@ class worker(models.Model):
 	kirjad_priority = models.CharField(max_length=999, choices=choices, default='')
 	def __str__(self):
 		return self.name
+
+class note(models.Model):
+	note = models.TextField()

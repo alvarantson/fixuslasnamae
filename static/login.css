@@ -89,3 +89,8 @@ table {
 	background-color: gray !important;
 	border: none;
 }
+textarea {
+	width: 100%;
+	margin-top: 1vh;
+	height: 25vh;
+}

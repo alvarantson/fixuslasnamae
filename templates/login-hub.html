@@ -174,7 +174,17 @@
 						<span class="glyphicon glyphicon-font" aria-hidden="true"></span>
 					</div>
 				</a>
+				.
+				<form method="POST"> {% csrf_token %}
+					<textarea name="notes">{{ notes.note }}</textarea>
+					<br>
+					<button type="submit" name="submit-btn" value="notes">SALVESTA</button>
+				</form>
 			</div>
+			{% else %}
+			<h3><u><b>MÄRKMED:</b></u></h3>
+			<br>
+			<h3>{{ notes.note|linebreaks }}</h3>
 			{% endif %}
 		</div>
 		{% if request.session.kirjad_priority != "M" %}
