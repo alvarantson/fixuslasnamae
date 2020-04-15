@@ -45,6 +45,7 @@ def login(request):
 	try:
 		return render(request,'login-hub.html',context={"mails":contactform.objects.all()[::-1], "workers":worker.objects.all(), "superusers":User.objects.all(), "logged_in":request.session["worker"], "notes": note.objects.all()[0]})
 	except Exception as e:
-		notice = e
+#		notice = e
+		print(e)
 
 	return render(request, 'login.html', context={"notice":notice})
