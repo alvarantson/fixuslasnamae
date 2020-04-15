@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import worker
+from .models import worker, note
 from meist.models import contactform
 from django.contrib.auth.models import User
 # Create your views here.
