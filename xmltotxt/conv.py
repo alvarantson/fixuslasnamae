@@ -1075,8 +1075,7 @@ def export_baltiautoosad(INVOICE):
 		siffer = doc.createElement('siffer')
 		ENTRY = "" # DEFAULT
 		try:
-			raise Exception
-			ENTRY = ""
+			ENTRY = toode["SellerProductId"]
 		except:
 			pass
 		if ENTRY != "":
