@@ -77,6 +77,13 @@
 					</div>
 				</a>
 				{% endif %}
+				{% if request.user.is_superuser %}
+				<a class="item-a" href="/kokkuvote">
+					<div class="item">KOKKUVOTE 
+						<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+					</div>
+				</a>
+				{% endif %}
 				
 				<br>
 				
