@@ -6,6 +6,6 @@ def kokkuvote(request):
 	if not request.user.is_authenticated:
 		return HttpResponseRedirect("/login")
 
-	return render(request, 'kokkuvote.html', context={
+	return render(request, 'kalender.html', context={
 		'link':google_link.objects.first()
 		})
