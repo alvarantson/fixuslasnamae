@@ -1115,8 +1115,8 @@ def export_baltiautoosad(INVOICE):
 		mhind = doc.createElement('mhind')
 		ENTRY = "" # DEFAULT
 		try: # TODO
-	#		ENTRY = toode["ItemPrice"]
-			raise Exception
+			ENTRY = toode["ItemPrice"]
+	#		raise Exception
 		except:
 			pass
 		if ENTRY != "":
@@ -1126,8 +1126,8 @@ def export_baltiautoosad(INVOICE):
 		hind = doc.createElement('hind')
 		ENTRY = "" # DEFAULT
 		try: # TODO
-	#		ENTRY = toode["ItemPrice"]
-			raise Exception
+			ENTRY = toode["ItemPrice"]
+	#		raise Exception
 		except:
 			pass
 		if ENTRY != "":
