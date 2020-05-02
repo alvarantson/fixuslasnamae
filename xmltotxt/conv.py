@@ -6,7 +6,13 @@ def get_text(item, tagName):
 	except:
 		return ""
 
-def get_items(doc):
+
+
+#		MOTORAL
+#		DATA IMPORT FROM XML 
+
+
+def get_items_motoral(doc):
 	tooted = doc.getElementsByTagName("ItemEntry")
 	items = []
 	for toode in tooted:
@@ -39,7 +45,7 @@ def get_items(doc):
 		items.append(item)
 	return items
 
-def get_data(doc):
+def get_data_motoral(doc):
 	meta = {}
 
 	div = doc.getElementsByTagName("Header")[0]
@@ -56,6 +62,7 @@ def get_data(doc):
 	invoice = {}
 
 	div = doc.getElementsByTagName("InvoiceInformation")[0]
+	invoice["Firm"] = "MOTORAL"
 	invoice["DocumentName"] = get_text(div, "DocumentName")
 	invoice["InvoiceNumber"] = get_text(div, "InvoiceNumber")
 	invoice["PaymentReferenceNumber"] = get_text(div, "PaymentReferenceNumber")
@@ -71,11 +78,89 @@ def get_data(doc):
 
 	return {"seller": seller, "invoice": invoice, "meta":meta}
 
+
+
+#		HASMAR
+#		DATA IMPORT FROM XML 
+
+def get_items_hasmar(doc):
+	tooted = doc.getElementsByTagName("ItemEntry")
+	items = []
+	for toode in tooted:
+		item = {}
+		item["Description"] = get_text(toode, "Description")
+		item["EAN"] = get_text(toode, "EAN")
+
+		item["ItemUnit"] = get_text(toode.getElementsByTagName("ItemDetailInfo")[0], "ItemUnit")
+		item["ItemAmount"] = get_text(toode.getElementsByTagName("ItemDetailInfo")[0], "ItemAmount")
+		item["ItemPrice"] = get_text(toode.getElementsByTagName("ItemDetailInfo")[0], "ItemPrice")
+
+		item["ItemSum"] = get_text(toode, "ItemSum")
+
+		item["VATRate"] = get_text(toode.getElementsByTagName("VAT")[0], "VATRate")
+		item["VATSum"] = get_text(toode.getElementsByTagName("VAT")[0], "VATSum")
+		item["Currency"] = "EUR" # defined at InvoiceInformation
+
+		item["ItemTotal"] = get_text(toode, "ItemTotal")
+
+		items.append(item)
+		print(items)
+	print(items)
+	return items
+
+def get_data_hasmar(doc):
+	meta = {}
+
+	div = doc.getElementsByTagName("Header")[0]
+	meta["Date"] = get_text(div, "Date")
+	meta["FileId"] = get_text(div, "FileId")
+	meta["Version"] = get_text(div, "Version")
+
+	seller = {}
+
+	div = doc.getElementsByTagName("SellerParty")[0]
+	seller["Name"] = get_text(div, "Name")
+	seller["RegNumber"] = get_text(div, "RegNumber")
+
+	invoice = {}
+
+	div = doc.getElementsByTagName("InvoiceInformation")[0]
+	invoice["Firm"] = "HASMAR"
+	invoice["DocumentName"] = get_text(div, "DocumentName")
+	invoice["InvoiceNumber"] = get_text(div, "InvoiceNumber")
+	invoice["PaymentReferenceNumber"] = get_text(div, "PaymentReferenceNumber")
+	invoice["InvoiceDate"] = get_text(div, "InvoiceDate")
+	invoice["DueDate"] = get_text(div, "DueDate")
+
+	div = doc.getElementsByTagName("InvoiceSumGroup")[0]
+	invoice["InvoiceSum"] = get_text(div, "InvoiceSum")
+	invoice["Rounding"] = get_text(div, "Rounding")
+	invoice["TotalVATSum"] = get_text(div, "TotalVATSum")
+	invoice["TotalSum"] = get_text(div, "TotalSum")
+
+	return {"seller": seller, "invoice": invoice, "meta":meta}
+
+
+
+
+
+
+
 def import_motoral(file):
 	doc = minidom.parse(file)
-	invoice = get_data(doc)
-	invoice["items"] = get_items(doc)
+	invoice = get_data_motoral(doc)
+	invoice["items"] = get_items_motoral(doc)
 	return invoice
+
+def import_hasmar(file):
+	doc = minidom.parse(file)
+	invoice = get_data_hasmar(doc)
+	invoice["items"] = get_items_hasmar(doc)
+	return invoice
+
+
+
+
 
 def export_baltiautoosad(INVOICE):
 
@@ -607,7 +692,7 @@ def export_baltiautoosad(INVOICE):
 	nimi = doc.createElement('nimi')
 	ENTRY = "" # DEFAULT
 	try:
-		ENTRY = "*MOTORAL*"+INVOICE["invoice"]["InvoiceNumber"]
+		ENTRY = "*"+INVOICE["invoice"]["Firm"]+"*"+INVOICE["invoice"]["InvoiceNumber"]
 	except:
 		pass
 	if ENTRY != "":
@@ -1446,11 +1531,4 @@ def export_baltiautoosad(INVOICE):
 			UnitOfMeasure.appendChild(doc.createTextNode(ENTRY))
 		tooterida.appendChild(UnitOfMeasure)
 
-	print(doc.toprettyxml(indent = ' '))
 	return doc
-
-
-#inquiry = import_motoral("52852320200414.xml")
-#doc = export_baltiautoosad(inquiry)
-
-#print(inquiry)

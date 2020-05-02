@@ -10,7 +10,14 @@ def xmltotxt(request):
 	is_worker(request)
 	if request.method == 'POST':
 		form = UploadFileForm(request.POST, request.FILES)
-		inquiry = import_motoral(request.FILES["file"])
+
+		if "Motoral" in request.POST["firm"]:
+			inquiry = import_motoral(request.FILES["file"])
+
+		if "Hasmar" in request.POST["firm"]:
+			inquiry = import_hasmar(request.FILES["file"])
+
+
 		doc = export_baltiautoosad(inquiry)
 
 #		file_data = writeTXT(ImportXML(), request.POST["name"])

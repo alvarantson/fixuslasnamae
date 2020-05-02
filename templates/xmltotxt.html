@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>{{ contact.name }}</title>
+	<meta charset="utf-8">
+	<title>{{ contact.name }}</title>
 
 
 
@@ -50,9 +50,18 @@
 		Tüüp: RV-Soft XML<br>
 		fail: siit alla tõmmatud fail!</p>
 	<form enctype="multipart/form-data" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
+	{% csrf_token %}
+	<label>
+		<input type="radio" name="firm" value="Motoral" required>
+		Motoral
+	</label>
+	<label>
+		<input type="radio" name="firm" value="Hasmar" required>
+		Hasmar
+	</label>
+	<br>
+	{{ form }}
+	<input type="submit" value="Submit">
 	</form>
 </body>
 </html>
