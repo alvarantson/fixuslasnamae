@@ -31,9 +31,19 @@ def get_items_motoral(doc):
 
 		item["ItemSum"] = get_text(toode, "ItemSum")
 
-		item["AddContent"] = get_text(toode.getElementsByTagName("Addition")[0], "AddContent")
-		item["AddRate"] = get_text(toode.getElementsByTagName("Addition")[0], "AddRate")
-		item["AddSum"] = get_text(toode.getElementsByTagName("Addition")[0], "AddSum")
+		try:
+			item["AddContent"] = get_text(toode.getElementsByTagName("Addition")[0], "AddContent")
+		except:
+			item["AddContent"] = ""
+
+		try:
+			item["AddRate"] = get_text(toode.getElementsByTagName("Addition")[0], "AddRate")
+		except:
+			item["AddRate"] = ""
+		try:
+			item["AddSum"] = get_text(toode.getElementsByTagName("Addition")[0], "AddSum")
+		except:
+			item["AddSum"] = ""
 
 		item["SumBeforeVAT"] = get_text(toode.getElementsByTagName("VAT")[0], "SumBeforeVAT")
 		item["VATRate"] = get_text(toode.getElementsByTagName("VAT")[0], "VATRate")
