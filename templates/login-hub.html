@@ -63,9 +63,16 @@
 					</div>
 				</a>
 				{% endif %}
+				{% if request.session.autode_hooldus_priority != "M" %}
+				<a class="item-a" href="/tookoda/hooldus">
+					<div class="item">Autode hooldus 
+						<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+					</div>
+				</a>
+				{% endif %}
 				{% if request.session.tookoda_priority != "M" %}
-				<a class="item-a" href="/tookoda">
-					<div class="item">TOOKODA 
+				<a class="item-a" href="/tookoda/rehvivahetus">
+					<div class="item">Rehvivahetus 
 						<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 					</div>
 				</a>
