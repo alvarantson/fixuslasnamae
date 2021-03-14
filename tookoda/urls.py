@@ -1,6 +1,8 @@
-from django.conf.urls import url
+from django.urls import path, re_path
 from . import views
 
 urlpatterns = [
-    url(r"^$", views.tookoda)
+    path("tookoda/hooldus/", views.hooldus),
+    path("tookoda/rehvivahetus/", views.rehvivahetus)
+
 ]

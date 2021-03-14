@@ -10,6 +10,7 @@ class worker(models.Model):
 		('K','muutmine'),
 	)
 	tookoda_priority = models.CharField(max_length=999, choices=choices, default='')
+	autode_hooldus_priority = models.CharField(max_length=999, choices=choices, default='')
 	varuosad_priority = models.CharField(max_length=999, choices=choices, default='')
 	kalender_priority = models.CharField(max_length=999, choices=choices, default='')
 	kalender2_priority = models.CharField(max_length=999, choices=choices, default='')
