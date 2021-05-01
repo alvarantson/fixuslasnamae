@@ -10,6 +10,7 @@ def is_worker(request):
 		request.session['kalender2_priority'] = worker.objects.get(name=request.session['worker']).kalender2_priority
 		request.session['varuosad_priority'] = worker.objects.get(name=request.session['worker']).varuosad_priority
 		request.session['tookoda_priority'] = worker.objects.get(name=request.session['worker']).tookoda_priority
+		request.session['autode_hooldus_priority'] = worker.objects.get(name=request.session['worker']).autode_hooldus_priority
 		request.session['tooted_priority'] = worker.objects.get(name=request.session['worker']).tooted_priority
 		request.session['kirjad_priority'] = worker.objects.get(name=request.session['worker']).kirjad_priority
 	except:
@@ -20,6 +21,7 @@ def is_worker(request):
 			request.session['kalender2_priority'] = "K"
 			request.session['varuosad_priority'] = "K"
 			request.session['tookoda_priority'] = "K"
+			request.session['autode_hooldus_priority'] = "K"
 			request.session['tooted_priority'] = "K"
 			request.session['kirjad_priority'] = "K"
 			request.session["worker"] = "admin"
