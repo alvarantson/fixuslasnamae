@@ -20,7 +20,7 @@ def rehvivahetus(request):
 		})
 
 
-def rehvivahetus(request):
+def rehvihotell(request):
 	is_worker(request)
 	
 	return render(request, 'kalender.html', context={
