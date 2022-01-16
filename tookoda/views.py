@@ -18,3 +18,11 @@ def rehvivahetus(request):
 	return render(request, 'kalender.html', context={
 		'link':google_link.objects.get(name="rehvivahetus")
 		})
+
+
+def rehvivahetus(request):
+	is_worker(request)
+	
+	return render(request, 'kalender.html', context={
+		'link':google_link.objects.get(name="rehvihotell")
+		})
